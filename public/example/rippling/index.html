@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <navigation-bar></navigation-bar>
+        <widget-container>
+            <div slot="aside">
+                <style>
+                    .button{
+                        border-radius:10px;
+                        background-color: #252329;
+                        width: 160px;
+                        height: 90px;
+                        margin:200px 200px;
+                        color:#9689b7;
+                        text-align: center;
+                        line-height: 90px;
+                        position: relative;
+                        cursor: pointer;
+                        overflow: hidden;
+                        user-select: none;
+                    }
+                    .button:hover{
+                        background-color: #37333F;
+                    }
+                    .rippling{
+                        position: absolute;
+                        background-color: #494650;
+                        transform: translate(-50%, -50%);
+                        border-radius: 50%;
+                        animation: blink 1s linear;
+                        pointer-events: none;
+        
+                    }
+                    @keyframes blink {
+                        0% {
+                            width: 0px;
+                            height: 0px;
+                            opacity: 0.5;
+                        }
+        
+                        100% {
+                            width: 400px;
+                            height: 400px;
+                            opacity: 0;
+                        }
+                    }
+                </style>
+                <div class="button" >
+                    span
+                    按钮
+                    Over the
+                </div>
+                <script>
+                    const button = document.querySelector(".button");
+                    button.addEventListener("click",(e)=>{
+                        console.log(e)
+                        console.log(button)
+                        const rippling = document.createElement("span");
+                        rippling.className = "rippling";
+                        rippling.style.left =e.pageX-button.offsetLeft+'px';
+                        rippling.style.top =e.pageY-button.offsetTop+'px';
+                        button.append(rippling);
+                        setTimeout(()=>{
+                            rippling.remove()
+                        },3000)
+                    })
+                </script>
+            </div>
+        </widget-container>
+        <script src="/components/navigationBar/navigationBar.js"></script>
+        <script type="module">
+            import WidgetContainer from "/components/widgetContainer/widgetContainer.js"
+            customElements.define("widget-container",WidgetContainer)
+            const wc = document.querySelector("widget-container");
+            const code = `
+            &lt;style&gt;
+                    .button{
+                        border-radius:10px;
+                        background-color: #252329;
+                        width: 160px;
+                        height: 90px;
+                        margin:200px 200px;
+                        color:#9689b7;
+                        text-align: center;
+                        line-height: 90px;
+                        position: relative;
+                        cursor: pointer;
+                        overflow: hidden;
+                        user-select: none;
+                    }
+                    .button:hover{
+                        background-color: #37333F;
+                    }
+                    .rippling{
+                        position: absolute;
+                        background-color: #494650;
+                        transform: translate(-50%, -50%);
+                        border-radius: 50%;
+                        animation: blink 1s linear;
+                        pointer-events: none;
+        
+                    }
+                    @keyframes blink {
+                        0% {
+                            width: 0px;
+                            height: 0px;
+                            opacity: 0.5;
+                        }
+        
+                        100% {
+                            width: 400px;
+                            height: 400px;
+                            opacity: 0;
+                        }
+                    }
+                &lt;/style&gt;
+                &lt;div class=&quot;button&quot; &gt;
+                    span
+                    按钮
+                    Over the
+                &lt;/div&gt;
+                &lt;script&gt;
+                    const button = document.querySelector(".button");
+                    button.addEventListener(&quot;click&quot;,(e)=&gt;{
+                        console.log(e)
+                        const rippling = document.createElement(&quot;span&quot;);
+                        rippling.className = &quot;rippling&quot;;
+                        rippling.style.left =e.pageX-button.offsetLeft+'px';
+                        rippling.style.top =e.pageY-button.offsetTop+'px';
+                        button.append(rippling);
+                        setTimeout(()=&gt;{
+                            rippling.remove()
+                        },3000)
+                    })
+                &lt;/script&gt;
+
+            app版 基于uniapp插槽
+            &lt;template&gt;
+                &lt;view class=&quot;btn&quot; @click=&quot;rippling&quot;&gt;
+                    &lt;text :class=&quot;{'rippling':ripplingVisible}&quot; :style=&quot;ripplingStyle&quot;&gt;&lt;/text&gt;
+                    &lt;slot&gt;
+                        &lt;text class=&quot;btn-text&quot; &gt;去结算&lt;/text&gt;
+                    &lt;/slot&gt;
+                &lt;/view&gt;
+            &lt;/template&gt;
+
+            &lt;script&gt;
+                export default {
+                    name:&quot;rippling&quot;,
+                    props:{
+                        ripplingRadius:{
+                            type:String,
+                            default:'400px'
+                        },
+                        ripplingBackgroundColor:{
+                            type:String,
+                            default:'#494650'
+                        }
+                    },
+                    data() {
+                        return {
+                            ripplingVisible:false,
+                            left:0,
+                            top:0
+                        };
+                    },
+                    computed:{
+                        ripplingStyle(){
+                            return \`
+                                left:\${this.left}px;
+                                top:\${this.top}px;
+                                --rippling-radius:\${this.ripplingRadius};
+                                --rippling-background-color:\${this.ripplingBackgroundColor};
+                            \`
+                        }
+                    },
+                    methods:{
+                        rippling(e){
+                            const that = this;
+                            const query = uni.createSelectorQuery().in(this);//自定义组件必须用in方法
+                            query.select('.btn').boundingClientRect(data =&gt; {
+                                // console.log(e)
+                                // console.log(data);
+                            const top = e.target.y-data.top;
+                            let left =e.target.x-data.left;
+                            that.left = left;
+                            that.top = top;
+                            that.ripplingVisible = true;
+                            setTimeout(()=&gt;{
+                                that.ripplingVisible = false;
+                            },800)
+                            }).exec();
+                            this.$emit(&quot;click&quot;)//触发父组件的click事件如果有的话
+                        }
+                    }
+                }
+            &lt;/script&gt;
+
+            &lt;style lang=&quot;scss&quot; scoped&gt;
+            .btn{
+                position: relative;
+                overflow: hidden;
+                user-select: none;
+            }
+            .rippling{
+                position: absolute;
+                background-color: var(--rippling-background-color);
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                animation: blink .8s linear;
+                pointer-events: none;
+            }
+            @keyframes blink {
+                0% {
+                    width: 0px;
+                    height: 0px;
+                    opacity: 0.5;
+                }
+
+                100% {
+                    width: var(--rippling-radius);
+                    height: var(--rippling-radius);
+                    opacity: 0;
+                }
+            }
+            &lt;/style&gt;
+            `
+            wc.setAttribute("code",code)
+        </script>
+    </body>
+</html>
+

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <navigation-bar></navigation-bar>
+        <widget-container>
+            <div slot="aside">
+                <style>
+                    .image{
+                        width: 20vw;
+                        height:15vw;
+                        position: absolute;
+                    }
+                    .centerImage{
+                        top:50%;
+                        left:50%;
+                        translate: -50% -50%;
+                        z-index: 2;
+                        transition-property:left right scale;
+                        transition-duration: 1s;
+                        transition-timing-function: linear;
+                    }
+                    .leftImage{
+                        top:50%;
+                        left:25%;
+                        translate: -50% -50%;
+                        scale:75%;
+                        opacity: 1;
+                        z-index: 1;
+                        transition-property:left right scale opacity;
+                        transition-duration: 1s;
+                        transition-timing-function: linear;
+                    }
+                    .rightImage{
+                        top:50%;
+                        left:75%;
+                        translate: -50% -50%;
+                        scale:75%; 
+                        opacity: 1;
+                        z-index: 1;
+                        transition-property:left right scale opacity;
+                        transition-duration: 1s;
+                        transition-timing-function: linear;
+                    }
+                    .leftOtherImage{
+                        top:50%;
+                        left:25%;
+                        translate: -50% -50%;
+                        scale:75%;
+                        z-index: 0;
+                        opacity: 0;
+                        transition-property:opacity;
+                        transition-duration: 2s;
+                        transition-timing-function: linear;
+                    }
+                    .rightOtherImage{
+                        top:50%;
+                        left:75%;
+                        translate: -50% -50%;
+                        scale:75%; 
+                        z-index: 0;
+                        opacity: 0;
+                        transition-property:opacity;
+                        transition-duration: 2s;
+                        transition-timing-function: linear;
+                    }
+                    .container{
+                        width: 30vw;
+                        height: 20vw;
+                        margin-left: 10vw;
+                        background-color: black;
+                        position: relative;
+                    }
+                </style>
+                <div class="container">
+                </div>
+                <script>
+                    const container = document.querySelector(".container");
+                    const imgList = ["./1.jpg","./2.jpg","./3.jpg","./4.jpg","./5.jpg"];
+                    const indicator = {centerImageIndex:2,leftImageIndex:1,rightImageIndex:3};
+                    for(let i = 0; i < imgList.length; i++){
+                        const img = document.createElement("img");
+                        img.className = 'image';
+                        img.src = imgList[i];
+                        container.append(img);
+                    }
+                    function handleToggleImg(i){
+                        initScroll({centerImageIndex:i,leftImageIndex:i-1,rightImageIndex:i+1});
+                    }
+                    function initScroll(indicator){
+                        const imgs = container.children;
+                        for(let i = 0; i < imgs.length; i++){
+                            imgs[i].className = 'image';
+                            if(i === indicator.centerImageIndex){
+                                imgs[i].classList.add('centerImage');
+                            }else if(i=== indicator.leftImageIndex){
+                                imgs[i].classList.add('leftImage');
+                                imgs[i].addEventListener("click",function(){handleToggleImg(i)},{once:true});
+                            }else if(i<indicator.leftImageIndex){
+                                imgs[i].classList.add('leftOtherImage');
+                            }else if(i===indicator.rightImageIndex){
+                                imgs[i].classList.add('rightImage')
+                                imgs[i].addEventListener("click",function(){handleToggleImg(i)},{once:true})
+                            }else if(i > indicator.rightImageIndex){
+                                imgs[i].classList.add('rightOtherImage')
+                            }
+                        }
+                    }
+                    initScroll(indicator);
+                </script>
+            </div>
+        </widget-container>
+        <script src="/components/navigationBar/navigationBar.js"></script>
+        <script type="module">
+            import WidgetContainer from "/components/widgetContainer/widgetContainer.js"
+            customElements.define("widget-container",WidgetContainer)
+            const wc = document.querySelector("widget-container");
+            const code = `
+            &lt;style&gt;
+                    .image{
+                        width: 20vw;
+                        height:15vw;
+                        position: absolute;
+                    }
+                    .centerImage{
+                        top:50%;
+                        left:50%;
+                        translate: -50% -50%;
+                        z-index: 2;
+                        transition-property:left right scale;
+                        transition-duration: 1s;
+                        transition-timing-function: linear;
+                    }
+                    .leftImage{
+                        top:50%;
+                        left:25%;
+                        translate: -50% -50%;
+                        scale:75%;
+                        opacity: 1;
+                        z-index: 1;
+                        transition-property:left right scale opacity;
+                        transition-duration: 1s;
+                        transition-timing-function: linear;
+                    }
+                    .rightImage{
+                        top:50%;
+                        left:75%;
+                        translate: -50% -50%;
+                        scale:75%; 
+                        opacity: 1;
+                        z-index: 1;
+                        transition-property:left right scale opacity;
+                        transition-duration: 1s;
+                        transition-timing-function: linear;
+                    }
+                    .leftOtherImage{
+                        top:50%;
+                        left:25%;
+                        translate: -50% -50%;
+                        scale:75%;
+                        z-index: 0;
+                        opacity: 0;
+                        transition-property:opacity;
+                        transition-duration: 2s;
+                        transition-timing-function: linear;
+                    }
+                    .rightOtherImage{
+                        top:50%;
+                        left:75%;
+                        translate: -50% -50%;
+                        scale:75%; 
+                        z-index: 0;
+                        opacity: 0;
+                        transition-property:opacity;
+                        transition-duration: 2s;
+                        transition-timing-function: linear;
+                    }
+                    .container{
+                        width: 30vw;
+                        height: 20vw;
+                        margin-left: 10vw;
+                        background-color: black;
+                        position: relative;
+                    }
+                &lt;/style&gt;
+                &lt;div class=&quot;container&quot;&gt;
+                &lt;/div&gt;
+                &lt;script&gt;
+                    const container = document.querySelector(".container");;
+                    const imgList = [&quot;./1.jpg&quot;,&quot;./2.jpg&quot;,&quot;./3.jpg&quot;,&quot;./4.jpg&quot;,&quot;./5.jpg&quot;];
+                    const indicator = {centerImageIndex:2,leftImageIndex:1,rightImageIndex:3};
+                    for(let i = 0; i &lt; imgList.length; i++){
+                        const img = document.createElement(&quot;img&quot;);
+                        img.className = 'image';
+                        img.src = imgList[i];
+                        container.append(img);
+                    }
+                    function handleToggleImg(i){
+                        initScroll({centerImageIndex:i,leftImageIndex:i-1,rightImageIndex:i+1});
+                    }
+                    function initScroll(indicator){
+                        const imgs = container.children;
+                        for(let i = 0; i &lt; imgs.length; i++){
+                            imgs[i].className = 'image';
+                            if(i === indicator.centerImageIndex){
+                                imgs[i].classList.add('centerImage');
+                            }else if(i=== indicator.leftImageIndex){
+                                imgs[i].classList.add('leftImage');
+                                imgs[i].addEventListener(&quot;click&quot;,function(){handleToggleImg(i)},{once:true});
+                            }else if(i&lt;indicator.leftImageIndex){
+                                imgs[i].classList.add('leftOtherImage');
+                            }else if(i===indicator.rightImageIndex){
+                                imgs[i].classList.add('rightImage')
+                                imgs[i].addEventListener(&quot;click&quot;,function(){handleToggleImg(i)},{once:true})
+                            }else if(i &gt; indicator.rightImageIndex){
+                                imgs[i].classList.add('rightOtherImage')
+                            }
+                        }
+                    }
+                    initScroll(indicator);
+                &lt;/script&gt;
+            `
+            wc.setAttribute("code",code)
+        </script>
+    </body>
+</html>
+
