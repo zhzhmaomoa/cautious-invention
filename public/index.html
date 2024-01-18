@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="/components/css/index.css" />
         <style>
             .classfication{
                 display: flex;
@@ -36,7 +37,10 @@
                 :nth-child(of type)
             </a>
         </nav>
-        <script src="./components/navigationBar/navigationBar.js"></script>
+        <script type="module">
+            import navigationBar from "/components/navigationBar/navigationBar.js";
+            customElements.define('navigation-bar', navigationBar);
+        </script>
     </body>
 </html>
 

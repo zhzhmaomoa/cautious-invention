@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="stylesheet" href="/components/css/index.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
@@ -53,92 +53,13 @@
                 </nav>
             </div>
         </widget-container>
-        <script src="/components/navigationBar/navigationBar.js"></script>
         <script type="module">
-            import WidgetContainer from "/components/widgetContainer/widgetContainer.js"
-            customElements.define("widget-container",WidgetContainer)
-            const wc = document.querySelector("widget-container");
-            const code = `
-            &lt;style&gt;
-                    .nav{
-                        display: flex;
-                        justify-content: space-evenly;
-                        align-items: center;
-                        height: 200px;
-                        width: 300px;
-                        div{
-                            position: relative;
-                        }
-                        div::before{
-                            content: &quot;&quot;;
-                            position: absolute;
-                            top: 2em;
-                            left:100%;
-                            width: 0;
-                            height: 100%;
-                            border-bottom: 2px solid #000;
-                            transition: all  linear .2s;
-                        }
-                        div:hover::before{
-                            transition: all  linear .2s;
-                            width: 100%;
-                            left: 0;
-                        }
-                        div:hover ~ div::before{
-                            left: 0;
-                        }
-                    }
-                &lt;/style&gt;
-                &lt;nav class=&quot;nav&quot;&gt;
-                    &lt;div&gt;
-                        全部
-                    &lt;/div&gt;
-                    &lt;div&gt;
-                        预约中
-                    &lt;/div&gt;
-                    &lt;div&gt;
-                        进行中
-                    &lt;/div&gt;
-                    &lt;div&gt;
-                        已完成
-                    &lt;/div&gt;
-                &lt;/nav&gt;
-  小程序版参考
-                .header{
-                    background-color: #fff;
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    font-size: 28rpx;
-                    color: #222222;
-                    padding:15rpx 0 30rpx;
-                    .header-item{
-                        position: relative;
-                    }
-                    .header-item::before{
-                        content: &quot;&quot;;
-                        position: absolute;
-                        top:.33em;
-                        left:100%;
-                        width:0;
-                        height: 100%;
-                        border-bottom: 4rpx solid #FFC000;
-                        transition: all ease .2s;
-                    }
-                    .header-item-selected ~ .header-item::before{
-                        left: 0;
-                    }
-                    .header-item-selected{
-                        font-weight: bold;
-                        color: #FFC000;
-                    }
-                    .header-item-selected::before{
-                        width: 100%;
-                        left: 0;
-                    }
-                } 
-            `
-            wc.setAttribute("code",code)
+            import navigationBar from "/components/navigationBar/navigationBar.js";
+            customElements.define('navigation-bar', navigationBar);
+            import widgetContainer from "/components/widgetContainer/widgetContainer.js"
+            customElements.define('widget-container', widgetContainer);
+            import code from "./code.js"
+            document.querySelector("widget-container").setAttribute("article",code);
         </script>
     </body>
 </html>

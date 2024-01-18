@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="stylesheet" href="/components/css/index.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
@@ -178,24 +178,24 @@
                 </script>
             </div>
         </widget-container>
-        <script src="/components/navigationBar/navigationBar.js"></script>
         <script type="module">
-            import WidgetContainer from "/components/widgetContainer/widgetContainer.js"
-            customElements.define("widget-container",WidgetContainer)
-            const wc = document.querySelector("widget-container");
-            const code = `
-                :first-child / :nth-child(n) / :last-child 规则
+            import navigationBar from "/components/navigationBar/navigationBar.js";
+            customElements.define('navigation-bar', navigationBar);
+            import widgetContainer from "/components/widgetContainer/widgetContainer.js"
+            customElements.define('widget-container', widgetContainer);
+            const html = `
+            :first-child / :nth-child(n) / :last-child 规则
                 匹配父元素的所有子元素
 
                 example1
-                &lt;div class=&quot;example1&quot;&gt;
-                    &lt;div&gt;div1&lt;/div&gt;
-                    &lt;div class=&quot;item&quot;&gt;div2&lt;/div&gt;
-                    &lt;span class=&quot;item&quot;&gt;span1&lt;/span&gt;
-                    &lt;span&gt;span2&lt;/span&gt;
-                    &lt;a&gt;a1&lt;/a&gt;
-                    &lt;a&gt;a2&lt;/a&gt;
-                &lt;/div&gt;
+                <div class="example1">
+                    <div>div1</div>
+                    <div class="item">div2</div>
+                    <span class="item">span1</span>
+                    <span>span2</span>
+                    <a>a1</a>
+                    <a>a2</a>
+                </div>
                 
                 div1所在的元素是example1的:first-child,
                 a2是:last-child,
@@ -211,14 +211,14 @@
                 将父元素的所有子元素按元素类型分组，再进行匹配。
 
                 example2
-                &lt;div class=&quot;example2&quot;&gt;
-                    &lt;div&gt;div1&lt;/div&gt;
-                    &lt;div class=&quot;item&quot;&gt;div2&lt;/div&gt;
-                    &lt;span class=&quot;item&quot;&gt;span1&lt;/span&gt;
-                    &lt;span&gt;span2&lt;/span&gt;
-                    &lt;a&gt;a1&lt;/a&gt;
-                    &lt;a&gt;a2&lt;/a&gt;
-                &lt;/div&gt;
+                <div class="example2">
+                    <div>div1</div>
+                    <div class="item">div2</div>
+                    <span class="item">span1</span>
+                    <span>span2</span>
+                    <a>a1</a>
+                    <a>a2</a>
+                </div>
 
                 浏览器会将example2的子元素按元素类型进行分组:
                 [div1,div2]、[span1,span2]、[a1,a2].
@@ -234,9 +234,12 @@
                 其中只有class为.item的div2字会变红,span2、a2不变。
                 以此类推。
             `
-            // const slot = document.querySelector(".slot");
-            // slot.innerHTML = code;
-            wc.setAttribute("code",code)
+            const css ='空'
+            const js = `空`;
+            const code = JSON.stringify({
+                js,css,html
+            }) 
+            document.querySelector("widget-container").setAttribute("article",code);
         </script>
     </body>
 </html>

@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="stylesheet" href="/components/css/index.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
         <widget-container>
             <div slot="aside">
                 <style>
-                    .body{
-                        width: 20vw;
-                        height: 20vw;
+                    .c-body{
+                        width: 300px;
+                        height: 300px;
                         background-color: black;
                         color:white;
                         position: relative;
-                        .border{
-                            position: absolute;
-                            top: 50%;
-                            left:50%;
-                            transform: translate(-50%,-50%);
-                            border:1px solid orange;
-                            padding: 2vw;
-                            width: 12vw;
-                            height: 12vw;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            .item{
-                                position: absolute;
-                                cursor: pointer;
-                                user-select: none;
-                            }
-                        }
+                    }
+                    .c-border{
+                        position: absolute;
+                        top: 50%;
+                        left:50%;
+                        transform: translate(-50%,-50%);
+                        border:1px solid orange;
+                        padding: 10px;
+                        width: 200px;
+                        height: 200px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .c-item{
+                        position: absolute;
+                        cursor: pointer;
+                        user-select: none;
                     }
                 </style>
-                <div class="body">
-                    <div class="border">
+                <div class="c-body">
+                    <div class="c-border">
                     </div>
                 </div>
                 <div>
@@ -60,13 +60,13 @@
                     '-1':'28px',
                     '0':'32px'
                     }
-                    const border =  document.querySelector(".border");
+                    const border =  document.querySelector(".c-border");
                     for(let i =0; i<yearArr.length;i++){
                         const year = document.createElement('div');
                         year.style.fontSize = positionMapFontSize[yearPositionArr[i]+''];
-                        year.className = 'item';
+                        year.className = 'c-item';
                         year.style.transform = `translate(0,${yearPositionArr[i]}00%)`;
-                        year.style.visibility = ( yearPositionArr[i]<-2 || yearPositionArr[i]>2)?'hidden':'visible';
+                        year.style.visibility = ( yearPositionArr[i]< -2 || yearPositionArr[i]>2)?'hidden':'visible';
                         const yearText = document.createTextNode(yearArr[i]);
                         year.appendChild(yearText);
                         border.appendChild(year);
@@ -83,22 +83,30 @@
                             if(e.screenY - y > 5 && yearPositionArr[0]!==0){
                                 yearPositionArr.forEach((item,index)=>{
                                     yearPositionArr[index] = item+1;
-                                    border.children[index].style.transform = `translate(0,${yearPositionArr[index]}00%)`;
-                                    border.children[index].style.fontSize = positionMapFontSize[yearPositionArr[index]+''];
-                                    border.children[index].style.visibility = ( yearPositionArr[index]<-2 || yearPositionArr[index]>2)?'hidden':'visible';
+                                    border.children[index].style.transform = 
+                                    `translate(0,${yearPositionArr[index]}00%)`;
+                                    border.children[index].style.fontSize = 
+                                    positionMapFontSize[yearPositionArr[index]+''];
+                                    border.children[index].style.visibility = 
+                                    ( yearPositionArr[index]< -2 || yearPositionArr[index]>2)?'hidden':'visible';
                                     if(yearPositionArr[index] === 0){
-                                        selectedItem.firstChild.nodeValue = border.children[index].firstChild.nodeValue;
+                                        selectedItem.firstChild.nodeValue = 
+                                        border.children[index].firstChild.nodeValue;
                                     }
                                 });
                                 y = e.screenY;
                             }else if(e.screenY-y< -5 && yearPositionArr[yearPositionArr.length-1]!==0){
                                 yearPositionArr.forEach((item,index)=>{
                                     yearPositionArr[index] = item-1;
-                                    border.children[index].style.transform = `translate(0,${yearPositionArr[index]}00%)`;
-                                    border.children[index].style.fontSize = positionMapFontSize[yearPositionArr[index]+''];
-                                    border.children[index].style.visibility = ( yearPositionArr[index]<-2 || yearPositionArr[index]>2)?'hidden':'visible';
+                                    border.children[index].style.transform = 
+                                    `translate(0,${yearPositionArr[index]}00%)`;
+                                    border.children[index].style.fontSize = 
+                                    positionMapFontSize[yearPositionArr[index]+''];
+                                    border.children[index].style.visibility = 
+                                    ( yearPositionArr[index]< -2 || yearPositionArr[index]>2)?'hidden':'visible';
                                     if(yearPositionArr[index] === 0){
-                                        selectedItem.firstChild.nodeValue = border.children[index].firstChild.nodeValue;
+                                        selectedItem.firstChild.nodeValue = 
+                                        border.children[index].firstChild.nodeValue;
                                     }
                                 });
                                 y = e.screenY;
@@ -117,123 +125,13 @@
                 </script>
             </div>
         </widget-container>
-        <script src="/components/navigationBar/navigationBar.js"></script>
         <script type="module">
-            import WidgetContainer from "/components/widgetContainer/widgetContainer.js"
-            customElements.define("widget-container",WidgetContainer)
-            const wc = document.querySelector("widget-container");
-            const code = `
-                &lt;style&gt;
-                        .body{
-                            width: 20vw;
-                            height: 20vw;
-                            background-color: black;
-                            color:white;
-                            position: relative;
-                            .border{
-                                position: absolute;
-                                top: 50%;
-                                left:50%;
-                                transform: translate(-50%,-50%);
-                                border:1px solid orange;
-                                padding: 2vw;
-                                width: 12vw;
-                                height: 12vw;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: center;
-                                .item{
-                                    position: absolute;
-                                    cursor: pointer;
-                                    user-select: none;
-                                }
-                            }
-                        }
-                &lt;/style&gt;
-                &lt;div class=&quot;body&quot;&gt;
-                    &lt;div class=&quot;border&quot;&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div&gt;
-                    当前选中项:&lt;div id=&quot;selectedItem&quot;&gt; &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;script&gt;
-                    const selectedItem  = document.querySelector(&quot;#selectedItem&quot;);
-                    selectedItem.firstChild.nodeValue = 2023;
-                    const yearArr = [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028];
-                    const yearPositionArr = [-5,-4,-3,-2,-1,0,1,2,3,4,5]
-                    const positionMapFontSize ={
-                        '-5':'12px',
-                        '5':'12px',
-                        '4':'16px',
-                        '-4':'16px',
-                        '3':'20px',
-                        '-3':'20px',
-                        '2':'24px',
-                        '-2':'24px',
-                        '1':'28px',
-                        '-1':'28px',
-                        '0':'32px'
-                    }
-                    const border =  document.querySelector(&quot;.border&quot;);
-                    for(let i =0; i&lt;yearArr.length;i++){
-                        const year = document.createElement('div');
-                        year.style.fontSize = positionMapFontSize[yearPositionArr[i]+''];
-                        year.className = 'item';
-                        year.style.transform = \`translate(0,\${yearPositionArr[i]}00%)\`;
-                        year.style.visibility = ( yearPositionArr[i]&lt;-2 || yearPositionArr[i]&gt;2)?'hidden':'visible';
-                        const yearText = document.createTextNode(yearArr[i]);
-                        year.appendChild(yearText);
-                        border.appendChild(year);
-                    }
-                    let isDraging = false;
-                    let y = 0;
-                    border.addEventListener(&quot;mousedown&quot;,(e)=&gt;{
-                        isDraging = true;
-                        y = e.screenY;
-                    })
-
-                    border.addEventListener(&quot;mouseover&quot;,(e)=&gt;{
-                        if(isDraging){
-                            if(e.screenY - y &gt; 5 &amp;&amp; yearPositionArr[0]!==0){
-                                yearPositionArr.forEach((item,index)=&gt;{
-                                    yearPositionArr[index] = item+1;
-                                    border.children[index].style.transform = \`translate(0,\${yearPositionArr[index]}00%)\`;
-                                    border.children[index].style.fontSize = positionMapFontSize[yearPositionArr[index]+''];
-                                    border.children[index].style.visibility = ( yearPositionArr[index]&lt;-2 || yearPositionArr[index]&gt;2)?'hidden':'visible';
-                                    if(yearPositionArr[index] === 0){
-                                        selectedItem.firstChild.nodeValue = border.children[index].firstChild.nodeValue;
-                                    }
-                                });
-                                y = e.screenY;
-                            }else if(e.screenY-y&lt; -5 &amp;&amp; yearPositionArr[yearPositionArr.length-1]!==0){
-                                yearPositionArr.forEach((item,index)=&gt;{
-                                    yearPositionArr[index] = item-1;
-                                    border.children[index].style.transform = \`translate(0,\${yearPositionArr[index]}00%)\`;
-                                    border.children[index].style.fontSize = positionMapFontSize[yearPositionArr[index]+''];
-                                    border.children[index].style.visibility = ( yearPositionArr[index]&lt;-2 || yearPositionArr[index]&gt;2)?'hidden':'visible';
-                                    if(yearPositionArr[index] === 0){
-                                        selectedItem.firstChild.nodeValue = border.children[index].firstChild.nodeValue;
-                                    }
-                                });
-                                y = e.screenY;
-                            }
-                        }
-
-                    })
-                    border.addEventListener(&quot;mouseup&quot;,(e)=&gt;{
-                        isDraging = false;
-                        y = 0;
-                    })
-                    border.addEventListener(&quot;mouseleave&quot;,(e)=&gt;{
-                        isDraging = false;
-                        y = 0;
-                    })
-                &lt;/script&gt;`
-            // const slot = document.querySelector(".slot");
-            // slot.innerHTML = code;
-            wc.setAttribute("code",code)
+            import navigationBar from "/components/navigationBar/navigationBar.js";
+            customElements.define('navigation-bar', navigationBar);
+            import widgetContainer from "/components/widgetContainer/widgetContainer.js"
+            customElements.define('widget-container', widgetContainer);
+            import code from "./code.js"
+            document.querySelector("widget-container").setAttribute("article",code);
         </script>
     </body>
 </html>

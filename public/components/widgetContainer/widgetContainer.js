@@ -1,5 +1,6 @@
 const template = document.createElement("template");
 template.innerHTML = /*html*/`
+    <link rel="stylesheet" href="/components/css/theme/srcery.css">
     <style>
         .widget-main{
             padding:25px;
@@ -15,19 +16,19 @@ template.innerHTML = /*html*/`
             padding: 25px;
         }
         .widget-article{
-            flex:1 0 600px;
+            flex:1 1 auto;
+            background-color:#eee;
+            padding: 10px 20px;
             border-radius: 10px;
-            background-color: #eee;
-            background-image: 
-            linear-gradient(rgba(255,255,255,0) calc(75% - 1px),#ccc calc(75% - 1px),#ccc, transparent calc(75% + 1px));
-            background-size:auto 50px;
-            line-height: 50px;
+        }
+        .pre{
+            margin:0;
         }
         .widget-content{
             white-space: pre-wrap;
-            vertical-align: bottom;
+            word-break:break-all;
         }
-        @media (min-width:1100px) {
+        @media (min-width:1000px) {
             .widget-aside{
                 position: sticky;
                 top:25px;
@@ -39,23 +40,73 @@ template.innerHTML = /*html*/`
             <slot name="aside"></slot>
         </aside>
         <article class="widget-article">
-            <code class="widget-content">
-            </code>
+            <select name="themes" id="themes-select">
+                <option value="srcery">srcery</option>
+                <option value="rainbow">rainbow</option>
+                <option value="panda-syntax-light">panda-syntax-light</option>
+                <option value="lioshi">lioshi</option>
+                <option value="color-brewer">color-brewer</option>
+            </select>
+            <pre class="pre">
+                <code class="widget-content">
+                </code>
+            </pre>
         </article>
     </main>
 `
+import hljs from "/utils/highlight/core.js";
+import css from "/utils/highlight/languages/css.js"
+import javascript from "/utils/highlight/languages/javascript.js"
+import xml from "/utils/highlight/languages/xml.js"
+
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage("xml",xml)
 export default class WidgetContainer extends HTMLElement{
     constructor(){
         super();
-        this._shadowRoot = this.attachShadow({mode:'open'});
+        this._shadowRoot = this.attachShadow({mode:'closed'});
         this._shadowRoot.appendChild(template.content.cloneNode(true))
-        this.$content = this._shadowRoot.querySelector(".widget-content")
+        this.$article = this._shadowRoot.querySelector(".widget-content");
+        this.$linkElement = this._shadowRoot.querySelector("link")
+        this.$theme = this._shadowRoot.querySelector("#themes-select")
+    }
+    connectedCallback(){
+        this.$theme.addEventListener("change",()=>{
+            selectTheme.apply(this);
+        })
     }
     static get observedAttributes() {
-        return ['code'];
+        return ['article'];
     }
     attributeChangedCallback(attrName, oldVal, newVal){
-        this.$content.innerHTML = newVal;
+        const {css,html,js} = JSON.parse(newVal);
+        const cssBeautify = hljs.highlight(css, {language: 'css'}).value;
+        const htmlBeautify = hljs.highlight(html, {language: 'xml'}).value;
+        const jsBeautify = hljs.highlight(js, {language: 'javascript'}).value;
+        this.$article.innerHTML = 
+            "<h3 class='hljs-title'>css</h3>"+cssBeautify +"<h3 class='hljs-title'>html</h3>"+ htmlBeautify + "<h3 class='hljs-title'>javascript</h3>"+jsBeautify
     }
+}
 
+function selectTheme(){
+    switch(this.$theme.value){
+        case 'srcery':
+            this.$linkElement.href = "/components/css/theme/srcery.css"
+            break;
+        case 'rainbow':
+            this.$linkElement.href = "/components/css/theme/rainbow.css"
+            break;
+        case 'panda-syntax-light':
+            this.$linkElement.href = "/components/css/theme/panda-syntax-light.css"
+            break;      
+        case 'lioshi':
+            this.$linkElement.href = "/components/css/theme/lioshi.css"
+            break; 
+        case 'color-brewer':
+            this.$linkElement.href = "/components/css/theme/color-brewer.css"
+            break;
+        default:
+            break;             
+    }
 }
