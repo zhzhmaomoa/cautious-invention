@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>cautious-invention</title>
         <link rel="stylesheet" href="/components/css/index.css" />
         <style>
             .classfication{
@@ -9,18 +10,19 @@
                 align-items: center;
                 justify-content: space-around;
             }
-            .a{
+             /* .a{
                 background: radial-gradient(circle closest-side, #ffffff 50%,transparent 0) 0 0;
                 background-size: 300px 300px;
                 width: 300px;
                 text-align: center;
                 line-height: 300px;
-            }
+            }  */
+            
         </style>
     </head>
     <body>
         <navigation-bar></navigation-bar>
-        <nav class="classfication">
+        <!-- <nav class="classfication">
             <a class="a" href="./example/drager/index.html">
                 drager
             </a>
@@ -36,7 +38,21 @@
             <a class="a" href="./knowledge/nth-child(of type)/index.html">
                 :nth-child(of type)
             </a>
-        </nav>
+        </nav> -->
+        <style>
+            .title{
+                width: fit-content;
+                margin-top:calc(50vh - 6.875rem);
+                font-size: 3.75rem;
+                font-weight: bolder;
+                -webkit-text-fill-color: red;
+                /* background-clip: text; */
+
+            }
+        </style>
+        <div class="title">
+            cautious-invention
+        </div>
         <script type="module">
             import navigationBar from "/components/navigationBar/navigationBar.js";
             customElements.define('navigation-bar', navigationBar);

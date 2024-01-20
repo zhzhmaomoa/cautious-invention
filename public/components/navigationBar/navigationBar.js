@@ -5,16 +5,16 @@ template.innerHTML = /*html*/`
           background:
           linear-gradient(#ffffff 50%, transparent 0) 0 0,
           radial-gradient(circle closest-side, #FFFFFF 53%, transparent 0) 0 0,
-          radial-gradient(circle closest-side, #FFFFFF 50%, transparent 0) 55px 0;
-          background-size: 110px 200px;
+          radial-gradient(circle closest-side, #FFFFFF 50%, transparent 0) 3.437rem 0;
+          background-size: 6.875rem 6.875rem;
           background-repeat: repeat-x;
-          height: 200px;
+          height: 6.875rem;
       }
       .menu{
           display: flex;
           justify-content: space-around;
           align-items: center;
-          height: 100px;
+          height: 5rem;
       }
     </style>
     <header class="header">

@@ -73,7 +73,7 @@ export default class WidgetContainer extends HTMLElement{
     }
     connectedCallback(){
         this.$theme.addEventListener("change",()=>{
-            selectTheme.apply(this);
+            this.selectTheme();
         })
     }
     static get observedAttributes() {
@@ -87,26 +87,25 @@ export default class WidgetContainer extends HTMLElement{
         this.$article.innerHTML = 
             "<h3 class='hljs-title'>css</h3>"+cssBeautify +"<h3 class='hljs-title'>html</h3>"+ htmlBeautify + "<h3 class='hljs-title'>javascript</h3>"+jsBeautify
     }
-}
-
-function selectTheme(){
-    switch(this.$theme.value){
-        case 'srcery':
-            this.$linkElement.href = "/components/css/theme/srcery.css"
-            break;
-        case 'rainbow':
-            this.$linkElement.href = "/components/css/theme/rainbow.css"
-            break;
-        case 'panda-syntax-light':
-            this.$linkElement.href = "/components/css/theme/panda-syntax-light.css"
-            break;      
-        case 'lioshi':
-            this.$linkElement.href = "/components/css/theme/lioshi.css"
-            break; 
-        case 'color-brewer':
-            this.$linkElement.href = "/components/css/theme/color-brewer.css"
-            break;
-        default:
-            break;             
+    selectTheme(){
+        switch(this.$theme.value){
+            case 'srcery':
+                this.$linkElement.href = "/components/css/theme/srcery.css"
+                break;
+            case 'rainbow':
+                this.$linkElement.href = "/components/css/theme/rainbow.css"
+                break;
+            case 'panda-syntax-light':
+                this.$linkElement.href = "/components/css/theme/panda-syntax-light.css"
+                break;      
+            case 'lioshi':
+                this.$linkElement.href = "/components/css/theme/lioshi.css"
+                break; 
+            case 'color-brewer':
+                this.$linkElement.href = "/components/css/theme/color-brewer.css"
+                break;
+            default:
+                break;             
+        }
     }
 }

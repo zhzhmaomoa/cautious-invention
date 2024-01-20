@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .row{
+                height: 10vh;
+                margin-top:5vh;
+                --radius:18vw 81%;
+                --bgSize:25vw 100%;
+            }
+            .row1{
+                --waveColor:#22a2c3;
+                background:
+                    radial-gradient(var(--radius) at bottom, var(--waveColor) 100%,transparent 0)  no-repeat, 
+                    radial-gradient(var(--radius) at top,transparent 86%,var(--waveColor) 0) no-repeat,
+                    radial-gradient(var(--radius) at bottom, var(--waveColor) 100%,transparent 0)  no-repeat,
+                    radial-gradient(var(--radius) at top,transparent 86%,var(--waveColor) 0) no-repeat,
+
+                    radial-gradient(var(--radius) at bottom, var(--waveColor) 100%,transparent 0)  no-repeat,
+                    radial-gradient(var(--radius) at top,transparent 86%,var(--waveColor) 0) no-repeat,
+                    radial-gradient(var(--radius) at bottom, var(--waveColor) 100%,transparent 0)  no-repeat, 
+                    radial-gradient(var(--radius) at top,transparent 86%,var(--waveColor) 0) no-repeat,
+                    black;
+                background-size: var(--bgSize);
+                animation: wave 10s infinite linear;
+            }
+            @keyframes wave {
+                0%{
+                    background-position: 
+                        -100vw 100%, -75vw 100%,-50vw 100%,-25vw 100%,-0vw 100%,
+                        25vw 100%,50vw 100%,75vw 100%,100vw 100%;
+                }
+                100%{
+                    background-position:
+                        0vw 100%, 25vw 100%,50vw 100%,75vw 100%,100vw 100%,
+                        125vw 100%,150vw 100%,175vw 100%,200vw 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="row1 row">
+
+        </div>
+    </body>
+</html>
