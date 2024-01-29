@@ -11,7 +11,7 @@ template.innerHTML = /*html*/`
             column-gap: 25px;
         }
         .widget-aside{
-            flex-basis: 400px;
+            flex-basis: auto;
             position: relative;
             padding: 25px;
         }
@@ -28,12 +28,12 @@ template.innerHTML = /*html*/`
             white-space: pre-wrap;
             word-break:break-all;
         }
-        @media (min-width:1000px) {
+        /*@media (min-width:1000px) {
             .widget-aside{
                 position: sticky;
                 top:25px;
             }
-        }
+        }*/
     </style>
     <main class="widget-main">
         <aside class="widget-aside">
