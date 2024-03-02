@@ -24,7 +24,7 @@ template.innerHTML = /*html*/`
         </nav>
     </header>
 `
-export default class NavigationBar extends HTMLElement {
+class NavigationBar extends HTMLElement {
     constructor() {
       super();
     //   this.appendChild(template.content.cloneNode(true));
@@ -32,3 +32,4 @@ export default class NavigationBar extends HTMLElement {
       this._shadowRoot.appendChild(template.content.cloneNode(true))
     }
 }
+customElements.define('navigation-bar', NavigationBar);

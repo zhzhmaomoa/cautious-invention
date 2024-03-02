@@ -178,11 +178,9 @@
                 </script>
             </div>
         </widget-container>
-        <script type="module">
-            import navigationBar from "/components/navigationBar/navigationBar.js";
-            customElements.define('navigation-bar', navigationBar);
-            import widgetContainer from "/components/widgetContainer/widgetContainer.js"
-            customElements.define('widget-container', widgetContainer);
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
+        <script type="module" src="/components/widgetContainer/widgetContainer.js"></script>
+        <script type="module"> 
             const html = `
             :first-child / :nth-child(n) / :last-child 规则
                 匹配父元素的所有子元素

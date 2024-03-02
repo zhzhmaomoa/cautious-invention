@@ -62,7 +62,7 @@ import xml from "/utils/highlight/languages/xml.js"
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('css', css);
 hljs.registerLanguage("xml",xml)
-export default class WidgetContainer extends HTMLElement{
+class WidgetContainer extends HTMLElement{
     constructor(){
         super();
         this._shadowRoot = this.attachShadow({mode:'closed'});
@@ -109,3 +109,4 @@ export default class WidgetContainer extends HTMLElement{
         }
     }
 }
+customElements.define('widget-container', WidgetContainer);

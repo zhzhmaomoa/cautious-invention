@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/components/css/index.css" />
+    </head>
+    <body>
+        <navigation-bar></navigation-bar>
+        <widget-container>
+            <div slot="aside">
+            </div>
+        </widget-container>
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
+        <script type="module" src="/components/widgetContainer/widgetContainer.js"></script>
+        <script type="module">
+            const html = `空`
+            const css ='空'
+            const js = `
+let person = {}
+Object.defineProperty(person,"name",{
+    configurable:true
+})
+Object.defineProperty(person,"name",{
+    configurable:false, // 设置为false后 无法对person.name 使用Object.defineProperty/无法使用delete person.name
+    writable:true,//设置为false后 无法使用person.name = "其他"的方式进行修改
+    enumerable:false,//设置为false后 无法遍历到这个属性 比如 for in  / Object.entries / 甚至 console.log(person)
+    value:"123"
+})
+
+person.a = "213" //直接使用person.a 的方式创建的属性configurable/writable/enumerable都是true
+//Object.defineProperty()创建的属性configurable/writable/enumerable 缺省值都是false`;
+            const code = JSON.stringify({
+                js,css,html
+            }) 
+            document.querySelector("widget-container").setAttribute("article",code);
+        </script>
+    </body>
+</html>
+
+
