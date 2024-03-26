@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/components/css/index.css" />
+    </head> 
+    <body>
+        <navigation-bar></navigation-bar>
+        <widget-container>
+            <div slot="aside">
+                <svg 
+                    width="200"
+                    height="500"
+                    viewBox="0 0 200 400"
+                    fill="#eecfaa"
+                    >
+                    <path class="right-hand" d="M150,155 C220,225 200,310 150,295 L120,155"></path>
+                    <path class="left-hand" d="M50,155 C-20,225 0,310 50,295 L80,155"></path>
+                    <path class="foot" d="M50,295 V360 H100 V340 V360 H150 L150 295" stroke="#d6ccab"></path>
+                    <path class="body" d="M55,160 C-75,380 275,380 145,160" stroke="#d6ccab"></path>
+                    <ellipse class="tag" cx="100" cy="250" rx="40" ry="30" fill="#fffffd"></ellipse>
+                    <g fill="black" style="font-size: 12px;">
+                        <text x="75" y="245">*Happy*</text>
+                        <text x="80" y="260">Animals!</text>
+                    </g>
+                    <circle class="left-ear" cx="50" cy="65" r="30"></circle>
+                    <circle class="right-ear" cx="150" cy="65" r="30"></circle>
+                    <ellipse class="face" cx="100" cy="110" ry="70" rx="80" ></ellipse>
+                    <circle class="left-eye" cx="60" cy="100" r="7" fill="black"></circle>
+                    <circle class="right-eye" cx="140" cy="100" r="7" fill="black"></circle>
+                    <ellipse class="mouth-x" cx="100" cy="125" ry="20" rx="25" fill="#c49564" ></ellipse>
+                    <ellipse class="nose" cx="100" cy="120" rx="6" ry="3" fill="#000008"></ellipse>
+                    <path class="left-mouth" d="M100,123 C100,133 90,133 87,125" fill="transparent" stroke="#060205" stroke-width="2" stroke-linecap="round"></path>
+                    <path class="left-mouth" d="M100,123 C100,133 110,133 113,125" fill="transparent"  stroke="#060205" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+            </div>
+        </widget-container>
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
+        <script type="module" src="/components/widgetContainer/widgetContainer.js"></script>
+        <script type="module">
+            const html = `
+                <svg 
+                    width="200"
+                    height="500"
+                    viewBox="0 0 200 400"
+                    fill="#eecfaa"
+                    >
+                    <path class="right-hand" d="M150,155 C220,225 200,310 150,295 L120,155"></path>
+                    <path class="left-hand" d="M50,155 C-20,225 0,310 50,295 L80,155"></path>
+                    <path class="foot" d="M50,295 V360 H100 V340 V360 H150 L150 295" stroke="#d6ccab"></path>
+                    <path class="body" d="M55,160 C-75,380 275,380 145,160" stroke="#d6ccab"></path>
+                    <ellipse class="tag" cx="100" cy="250" rx="40" ry="30" fill="#fffffd"></ellipse>
+                    <g fill="black" style="font-size: 12px;">
+                        <text x="75" y="245">*Happy*</text>
+                        <text x="80" y="260">Animals!</text>
+                    </g>
+                    <circle class="left-ear" cx="50" cy="65" r="30"></circle>
+                    <circle class="right-ear" cx="150" cy="65" r="30"></circle>
+                    <ellipse class="face" cx="100" cy="110" ry="70" rx="80" ></ellipse>
+                    <circle class="left-eye" cx="60" cy="100" r="7" fill="black"></circle>
+                    <circle class="right-eye" cx="140" cy="100" r="7" fill="black"></circle>
+                    <ellipse class="mouth-x" cx="100" cy="125" ry="20" rx="25" fill="#c49564" ></ellipse>
+                    <ellipse class="nose" cx="100" cy="120" rx="6" ry="3" fill="#000008"></ellipse>
+                    <path class="left-mouth" d="M100,123 C100,133 90,133 87,125" fill="transparent" stroke="#060205" stroke-width="2" stroke-linecap="round"></path>
+                    <path class="left-mouth" d="M100,123 C100,133 110,133 113,125" fill="transparent"  stroke="#060205" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+            `
+            const css ='空'
+            const js = `空`;
+            const code = JSON.stringify({
+                js,css,html
+            }) 
+            document.querySelector("widget-container").setAttribute("article",code);
+        </script>
+    </body>
+</html>
+

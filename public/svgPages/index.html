@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>cautious-invention</title>
+        <link rel="stylesheet" href="/components/css/index.css" />
+        <style>
+            .classfication{
+                position: absolute;
+                inset:6.875rem 0  0 0;
+            }
+            .cloud{
+                position: absolute;
+                top:var(--top);
+                left: var(--left);
+                width: 4.38rem;height: 4.38rem;
+                color:white;
+                -webkit-text-fill-color:black;
+                background-color: currentColor;
+                border-radius: 50%;
+                box-shadow:
+                    -2.5rem 0,
+                    -1.56rem -1.25rem,
+                    0.63rem -0.94rem,
+                    -1.25rem 0.50rem,
+                    0.63rem 0.31rem,
+                    2.19rem 0 0 -0.31rem;
+                animation: cloud-move 30s infinite both linear;
+            }
+            @keyframes cloud-move {
+                0%{
+                    margin-left: 100%;
+                }
+                100%{
+                    margin-left: 0%;
+                }
+            }
+            .cloud:hover{
+                animation-play-state: paused;
+            }
+        </style>
+    </head>
+    <body>
+        <navigation-bar></navigation-bar>
+        <nav class="classfication">
+            <a class="cloud" href="./bearBank/index.html" style="--top:8.25rem;animation-delay: 0;">
+               bearBank 
+            </a>
+        </nav>
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
+    </body>
+</html>
+

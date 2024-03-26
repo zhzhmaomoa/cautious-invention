@@ -3,23 +3,20 @@ template.innerHTML = /*html*/`
     <link rel="stylesheet" href="/components/css/theme/srcery.css">
     <style>
         .widget-main{
-            padding:25px;
+            padding:1rem;
             display: flex;
-            justify-content: center;
-            align-items:flex-start;
-            flex-wrap:wrap;
-            column-gap: 25px;
+            column-gap: 1rem;
         }
         .widget-aside{
             flex-basis: auto;
             position: relative;
-            padding: 25px;
+            padding: 1rem;
         }
         .widget-article{
             flex:1 1 auto;
             background-color:#eee;
-            padding: 10px 20px;
-            border-radius: 10px;
+            padding: .5rem 1rem;
+            border-radius: .5rem;
         }
         .pre{
             margin:0;
@@ -28,12 +25,12 @@ template.innerHTML = /*html*/`
             white-space: pre-wrap;
             word-break:break-all;
         }
-        /*@media (min-width:1000px) {
+        @media (min-width:1000px) {
             .widget-aside{
                 position: sticky;
                 top:25px;
             }
-        }*/
+        }
     </style>
     <main class="widget-main">
         <aside class="widget-aside">

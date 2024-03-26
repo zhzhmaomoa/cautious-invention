@@ -20,7 +20,7 @@ template.innerHTML = /*html*/`
     <header class="header">
         <nav class="menu">
             <a href="/index.html">web</a>
-            <a>flutter</a>
+            <a href="/svgPages/index.html">svg</a>
         </nav>
     </header>
 `
