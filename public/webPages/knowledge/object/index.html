@@ -12,8 +12,8 @@
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
         <script type="module" src="/components/widgetContainer/widgetContainer.js"></script>
         <script type="module">
-            const html = `空`
-            const css ='空'
+            const html = ``
+            const css =''
             const js = `
 let person = {}
 Object.defineProperty(person,"name",{
@@ -29,7 +29,7 @@ Object.defineProperty(person,"name",{
 person.a = "213" //直接使用person.a 的方式创建的属性configurable/writable/enumerable都是true
 //Object.defineProperty()创建的属性configurable/writable/enumerable 缺省值都是false`;
             const code = JSON.stringify({
-                js,css,html
+                '':{js,css,html}
             }) 
             document.querySelector("widget-container").setAttribute("article",code);
         </script>

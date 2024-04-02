@@ -63,6 +63,6 @@ button.addEventListener("click",(e)=>{
 `;
 
 const code = JSON.stringify({
-    js,css,html
+    '':{js,css,html}
 }) 
 export default code;

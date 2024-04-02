@@ -46,6 +46,6 @@ const html = `
 `
 const js = `空`;
 const code = JSON.stringify({
-    js,css,html
+    '':{js,css,html}
 }) 
 export default code;

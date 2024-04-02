@@ -103,6 +103,6 @@ const css = `
     position: relative;
 }   `
 const code = JSON.stringify({
-    js,css,html
+    '':{js,css,html}
 }) 
 export default code;

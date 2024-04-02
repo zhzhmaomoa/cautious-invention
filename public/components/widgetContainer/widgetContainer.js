@@ -77,12 +77,16 @@ class WidgetContainer extends HTMLElement{
         return ['article'];
     }
     attributeChangedCallback(attrName, oldVal, newVal){
-        const {css,html,js} = JSON.parse(newVal);
-        const cssBeautify = hljs.highlight(css, {language: 'css'}).value;
-        const htmlBeautify = hljs.highlight(html, {language: 'xml'}).value;
-        const jsBeautify = hljs.highlight(js, {language: 'javascript'}).value;
-        this.$article.innerHTML = 
-            "<h3 class='hljs-title'>css</h3>"+cssBeautify +"<h3 class='hljs-title'>html</h3>"+ htmlBeautify + "<h3 class='hljs-title'>javascript</h3>"+jsBeautify
+        const valParsed = JSON.parse(newVal)
+        for(let key in valParsed){
+            const {css,html,js} = valParsed[key];
+            console.log(css,html,js)
+            const cssBeautify = hljs.highlight(css, {language: 'css'}).value;
+            const htmlBeautify = hljs.highlight(html, {language: 'xml'}).value;
+            const jsBeautify = hljs.highlight(js, {language: 'javascript'}).value;
+            this.$article.innerHTML += key+'\n' + cssBeautify + htmlBeautify + jsBeautify
+        }
+       
     }
     selectTheme(){
         switch(this.$theme.value){

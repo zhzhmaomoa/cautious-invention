@@ -117,6 +117,6 @@ const html = `
 </div>
 `;
 const code =JSON.stringify({
-    js,css,html
+    '':{js,css,html}
 }) 
 export default code
