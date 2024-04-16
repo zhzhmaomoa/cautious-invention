@@ -37,6 +37,80 @@
             .cloud:hover{
                 animation-play-state: paused;
             }
+            .title-x{
+                margin:40vh 0;  
+                text-align: center;
+            }
+            .title-wave{
+                --radius:18vw 70%;
+                --waveColor:#2e88c7;
+                --shallowWaveColor:#9ccce8;
+                --waveTop:radial-gradient(var(--radius) at top,transparent 100%,var(--waveColor) 0) no-repeat;
+                --waveBottom:radial-gradient(var(--radius) at bottom, var(--waveColor) 99%,transparent 0)  no-repeat;
+                --shallowWaveTop:radial-gradient(var(--radius) at top,transparent 100%,var(--shallowWaveColor) 0) no-repeat;
+                --shallowWaveBottom:radial-gradient(var(--radius) at bottom, var(--shallowWaveColor) 99%,transparent 0)  no-repeat;
+                background:
+                    var(--waveBottom),var(--waveTop),var(--waveBottom),var(--waveTop),
+                    var(--waveBottom),var(--waveTop),var(--waveBottom),var(--waveTop),
+
+                    var(--shallowWaveTop),var(--shallowWaveBottom),var(--shallowWaveTop),var(--shallowWaveBottom),
+                    var(--shallowWaveTop),var(--shallowWaveBottom),var(--shallowWaveTop),var(--shallowWaveBottom)
+                    transparent;
+                animation: wave 10s infinite linear,
+                tide 6s infinite alternate;
+            }
+            @keyframes wave {
+                0%{
+                    background-position: 
+                        -100vw 100%, -75vw 100%,-50vw 100%,-25vw 100%,
+                        0vw 100%,25vw 100%,50vw 100%,75vw 100%,
+                        0vw 100%,25vw 100%,50vw 100%,75vw 100%,
+                        100vw 100%,125vw 100%,150vw 100%,175vw 100%;
+                }
+                100%{
+                    background-position:
+                        0vw 100%, 25vw 100%,50vw 100%,75vw 100%,
+                        100vw 100%,125vw 100%,150vw 100%,175vw 100%,
+                        -100vw 100%, -75vw 100%,-50vw 100%,-25vw 100%,
+                        0vw 100%,25vw 100%,50vw 100%,75vw 100%;
+                }
+            }
+            @keyframes tide {
+                0%{
+                    background-size: 
+                        25.2vw 50%,25.2vw 50%,25.2vw 50%,25.2vw 50%,25.2vw 50%,25.2vw 50%,25.2vw 50%,25.2vw 50%,
+                        25.2vw 70%,25.2vw 70%,25.2vw 70%,25.2vw 70%,25.2vw 70%,25.2vw 70%,25.2vw 70%,25.2vw 70%;
+                }
+                25%{
+                    background-size: 
+                        25.2vw 70%, 25.2vw 70%, 25.2vw 70%, 25.2vw 70%, 25.2vw 70%, 25.2vw 70%, 25.2vw 70%, 25.2vw 70%,
+                        25.2vw 75%, 25.2vw 75%, 25.2vw 75%, 25.2vw 75%, 25.2vw 75%, 25.2vw 75%, 25.2vw 75%, 25.2vw 75%;
+                }
+                50%{
+                    background-size: 
+                        25.2vw 80%,25.2vw 80%,25.2vw 80%,25.2vw 80%,25.2vw 80%,25.2vw 80%,25.2vw 80%,25.2vw 80%,
+                        25.2vw 85%,25.2vw 85%,25.2vw 85%,25.2vw 85%,25.2vw 85%,25.2vw 85%,25.2vw 85%,25.2vw 85%;
+                }
+                75%{
+                    background-size: 
+                        25.2vw 40%,25.2vw 40%,25.2vw 40%,25.2vw 40%,25.2vw 40%,25.2vw 40%,25.2vw 40%,25.2vw 40%,
+                        25.2vw 65%,25.2vw 65%,25.2vw 65%,25.2vw 65%,25.2vw 65%,25.2vw 65%,25.2vw 65%,25.2vw 65%;
+                }
+                100%{
+                    background-size: 
+                        25.2vw 90%,25.2vw 90%,25.2vw 90%,25.2vw 90%,25.2vw 90%,25.2vw 90%,25.2vw 90%,25.2vw 90%,
+                        25.2vw 95%,25.2vw 95%,25.2vw 95%,25.2vw 95%,25.2vw 95%,25.2vw 95%,25.2vw 95%,25.2vw 95%;
+                }              
+            }
+            .title-text{
+                font-size: 100px;
+                font-weight: bolder;
+                word-wrap: break-word;
+                -webkit-text-stroke: 1px #2e88c7;
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
         </style>
     </head>
     <body>
@@ -46,6 +120,13 @@
                bearBank 
             </a>
         </nav>
+        <div class="title-x">
+            <span class="title-wave title-text">            
+                svg
+            </span>
+        </div>      
+        <footer-area></footer-area>
+        <script type="module" src="/components/footer/footer.js"></script>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
     </body>
 </html>
