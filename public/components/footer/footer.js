@@ -12,17 +12,25 @@ template.innerHTML = /*html*/`
       }
       .menu{
           display: flex;
-          justify-content: space-around;
+          justify-content: center;
           align-items: center;
           padding-top:1.875rem;
           height: 5rem;
           font-size:.75rem;
       }
+	.icon{
+		width:1rem;
+		height:1rem;
+		margin-left:5rem;
+	}
     </style>
     <header class="header">
         <nav class="menu">
           <a href="https://beian.miit.gov.cn/" target="_blank">鲁ICP备2024083611号</a>
+	  <img class="icon" src="/filingIcon.png" />
+	  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=37010102006812" rel="noreferrer" target="_blank">鲁公网安备37010102006812</a>
         </nav>
+    </header>
     </header>
 `
 class Footer extends HTMLElement {
