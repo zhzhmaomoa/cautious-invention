@@ -2,244 +2,270 @@
 <html>
     <head>
         <link rel="stylesheet" href="/components/css/index.css" />
+        <link rel="stylesheet" href="/components/house/house.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
-        <widget-container>
-            <div slot="aside">
-                <style>
-                    .example1,.example2,.example1-buttons,.example2-buttons{
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-                    .example1-buttons,.example2-buttons{
-                        margin-top: 10px;
-                        row-gap: 10px;
-                    }
-                </style>
-                <h3>example1</h3>
-                <div class="example1-container">
-                    <div class="example1">
-                        <div>div1</div>
-                        <div class="item">div2</div>
-                        <span class="item">span1</span>
-                        <span>span2</span>
-                        <a>a1</a>
-                        <a>a2</a>
-                    </div>
-                </div>
-                <div class="example1-buttons">
-                    <button>*:first-child</button>
-                    <button>*:nth-child(<input type="number" value="1"/>)</button>
-                    <button>*:last-child</button>
-                    <button>.item:nth-child(<input type="number" value="1"/>)</button>
-                </div>
-                <script>
-                    const example1Buttons = document.querySelectorAll(".example1-buttons button")
-                    const input1s = document.querySelectorAll(".example1-buttons input")
-                    const example1Container = document.querySelector(".example1-container");
-                    example1Buttons.forEach((btn,index)=>{
-                        switch(index){
-                            case 0:
-                                btn.addEventListener("click",()=>{
-                                    const example1ContainerStyle = example1Container.querySelector("style");
-                                    if(example1ContainerStyle){
-                                        example1ContainerStyle.remove();
-                                    }
-                                    example1Container.innerHTML +=  `<style>
-                                            .example1 *:first-child{
-                                                color:red
-                                            }
-                                        </style>`;  
-                                    console.log(example1Container)                              
-                                });
-                                break;
-                            case 1:
-                                btn.addEventListener("click",()=>{
-                                    const example1ContainerStyle = example1Container.querySelector("style");
-                                    if(example1ContainerStyle){
-                                        example1ContainerStyle.remove();
-                                    }
-                                    example1Container.innerHTML +=  `<style>
-                                            .example1 *:nth-child(${input1s[0].value}){
-                                                color:red
-                                            }
-                                        </style>`;
-                                })
-                                break;
-                            case 2:
-                                btn.addEventListener("click",()=>{
-                                    const example1ContainerStyle = example1Container.querySelector("style");
-                                    if(example1ContainerStyle){
-                                        example1ContainerStyle.remove();
-                                    }
-                                    example1Container.innerHTML +=  `<style>
-                                            .example1 *:last-child{
-                                                color:red
-                                            }
-                                        </style>`;  
-                                })  
-                                break;  
-                            case 3:
-                                btn.addEventListener("click",()=>{
-                                    const example1ContainerStyle = example1Container.querySelector("style");
-                                    if(example1ContainerStyle){
-                                        example1ContainerStyle.remove();
-                                    }
-                                    example1Container.innerHTML +=  `<style>
-                                            .example1 .item:nth-child(${input1s[1].value}){
-                                                color:red
-                                            }
-                                        </style>`;
-                                })
-                                break;
-                        }
-                    })
-                </script>
-                <h3>example2</h3>
-                <div class="example2-container">
-                    <div class="example2">
-                        <div>div1</div>
-                        <div class="item">div2</div>
-                        <span class="item">span1</span>
-                        <span>span2</span>
-                        <a>a1</a>
-                        <a>a2</a>
-                    </div>
-                </div>
-                <div class="example2-buttons">
-                    <button>*:first-of-type</button>
-                    <button>*:nth-of-type(<input type="number" value="1"/>)</button>
-                    <button>*:last-of-type</button>
-                    <button>.item:nth-of-type(<input type="number" value="1"/>)</button>
-                </div>
-                <script>
-                    const example2Buttons = document.querySelectorAll(".example2-buttons button")
-                    const input2s = document.querySelectorAll(".example2-buttons input")
-                    const example2Container = document.querySelector(".example2-container");
-                    example2Buttons.forEach((btn,index)=>{
-                        switch(index){
-                            case 0:
-                                btn.addEventListener("click",()=>{
-                                    const example2ContainerStyle = example2Container.querySelector("style");
-                                    if(example2ContainerStyle){
-                                        example2ContainerStyle.remove();
-                                    }
-                                    example2Container.innerHTML +=  `<style>
-                                            .example2 *:first-of-type{
-                                                color:red
-                                            }
-                                        </style>`;  
-                                });
-                                break;
-                            case 1:
-                                btn.addEventListener("click",()=>{
-                                    const example2ContainerStyle = example2Container.querySelector("style");
-                                    if(example2ContainerStyle){
-                                        example2ContainerStyle.remove();
-                                    }
-                                    example2Container.innerHTML +=  `<style>
-                                            .example2 *:nth-of-type(${input2s[0].value}){
-                                                color:red
-                                            }
-                                        </style>`;
-                                })
-                                break;
-                            case 2:
-                                btn.addEventListener("click",()=>{
-                                    const example2ContainerStyle = example2Container.querySelector("style");
-                                    if(example2ContainerStyle){
-                                        example2ContainerStyle.remove();
-                                    }
-                                    example2Container.innerHTML +=  `<style>
-                                            .example2 *:last-of-type{
-                                                color:red
-                                            }
-                                        </style>`;  
-                                })  
-                                break;  
-                            case 3:
-                                btn.addEventListener("click",()=>{
-                                    const example2ContainerStyle = example2Container.querySelector("style");
-                                    if(example2ContainerStyle){
-                                        example2ContainerStyle.remove();
-                                    }
-                                    example2Container.innerHTML +=  `<style>
-                                            .example2 .item:nth-of-type(${input2s[1].value}){
-                                                color:red
-                                            }
-                                        </style>`;
-                                })
-                                break;
-                        }
-                    })
-                    
-                </script>
-            </div>
-        </widget-container>
+	<div class=" com-house ">
+		<roof-area class=" full-bleed "></roof-area>
+		<balcony-area class=" code ">
+			<style>
+			    .example1,.example1-buttons{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+			    }
+			    .example1-buttons{
+				margin-top: 10px;
+				row-gap: 10px;
+			    }
+			</style>
+			<h3>example1</h3>
+			<div class="example1-container">
+			    <div class="example1">
+				<div>div1</div>
+				<div class="item">div2</div>
+				<span class="item">span1</span>
+				<span>span2</span>
+				<a>a1</a>
+				<a>a2</a>
+			    </div>
+			</div>
+			<div class="example1-buttons">
+			    <button>*:first-child</button>
+			    <button>*:nth-child(<input type="number" value="1"/>)</button>
+			    <button>*:last-child</button>
+			    <button>.item:nth-child(<input type="number" value="1"/>)</button>
+			</div>
+			<script>
+			    const example1Buttons = document.querySelectorAll(".example1-buttons button")
+			    const input1s = document.querySelectorAll(".example1-buttons input")
+			    const example1Container = document.querySelector(".example1-container");
+			    example1Buttons.forEach((btn,index)=>{
+				switch(index){
+				    case 0:
+					btn.addEventListener("click",()=>{
+					    const example1ContainerStyle = example1Container.querySelector("style");
+					    if(example1ContainerStyle){
+						example1ContainerStyle.remove();
+					    }
+					    example1Container.innerHTML +=  `<style>
+						    .example1 *:first-child{
+							color:red
+						    }
+						</style>`;  
+					    console.log(example1Container)                              
+					});
+					break;
+				    case 1:
+					btn.addEventListener("click",()=>{
+					    const example1ContainerStyle = example1Container.querySelector("style");
+					    if(example1ContainerStyle){
+						example1ContainerStyle.remove();
+					    }
+					    example1Container.innerHTML +=  `<style>
+						    .example1 *:nth-child(${input1s[0].value}){
+							color:red
+						    }
+						</style>`;
+					})
+					break;
+				    case 2:
+					btn.addEventListener("click",()=>{
+					    const example1ContainerStyle = example1Container.querySelector("style");
+					    if(example1ContainerStyle){
+						example1ContainerStyle.remove();
+					    }
+					    example1Container.innerHTML +=  `<style>
+						    .example1 *:last-child{
+							color:red
+						    }
+						</style>`;  
+					})  
+					break;  
+				    case 3:
+					btn.addEventListener("click",()=>{
+					    const example1ContainerStyle = example1Container.querySelector("style");
+					    if(example1ContainerStyle){
+						example1ContainerStyle.remove();
+					    }
+					    example1Container.innerHTML +=  `<style>
+						    .example1 .item:nth-child(${input1s[1].value}){
+							color:red
+						    }
+						</style>`;
+					})
+					break;
+				}
+			    })
+			</script>
+		</balcony-area>
+		<wall-area class=" article " id="articleOne"></wall-area>
+		<balcony-area class=" code ">
+			<style>
+			    .example2,.example2-buttons{
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+			    }
+			    .example2-buttons{
+				margin-top: 10px;
+				row-gap: 10px;
+			    }
+			</style>
+			<h3>example2</h3>
+			<div class="example2-container">
+			    <div class="example2">
+				<div>div1</div>
+				<div class="item">div2</div>
+				<span class="item">span1</span>
+				<span>span2</span>
+				<a>a1</a>
+				<a>a2</a>
+			    </div>
+			</div>
+			<div class="example2-buttons">
+			    <button>*:first-of-type</button>
+			    <button>*:nth-of-type(<input type="number" value="1"/>)</button>
+			    <button>*:last-of-type</button>
+			    <button>.item:nth-of-type(<input type="number" value="1"/>)</button>
+			</div>
+			<script>
+			    const example2Buttons = document.querySelectorAll(".example2-buttons button")
+			    const input2s = document.querySelectorAll(".example2-buttons input")
+			    const example2Container = document.querySelector(".example2-container");
+			    example2Buttons.forEach((btn,index)=>{
+				switch(index){
+				    case 0:
+					btn.addEventListener("click",()=>{
+					    const example2ContainerStyle = example2Container.querySelector("style");
+					    if(example2ContainerStyle){
+						example2ContainerStyle.remove();
+					    }
+					    example2Container.innerHTML +=  `<style>
+						    .example2 *:first-of-type{
+							color:red
+						    }
+						</style>`;  
+					});
+					break;
+				    case 1:
+					btn.addEventListener("click",()=>{
+					    const example2ContainerStyle = example2Container.querySelector("style");
+					    if(example2ContainerStyle){
+						example2ContainerStyle.remove();
+					    }
+					    example2Container.innerHTML +=  `<style>
+						    .example2 *:nth-of-type(${input2s[0].value}){
+							color:red
+						    }
+						</style>`;
+					})
+					break;
+				    case 2:
+					btn.addEventListener("click",()=>{
+					    const example2ContainerStyle = example2Container.querySelector("style");
+					    if(example2ContainerStyle){
+						example2ContainerStyle.remove();
+					    }
+					    example2Container.innerHTML +=  `<style>
+						    .example2 *:last-of-type{
+							color:red
+						    }
+						</style>`;  
+					})  
+					break;  
+				    case 3:
+					btn.addEventListener("click",()=>{
+					    const example2ContainerStyle = example2Container.querySelector("style");
+					    if(example2ContainerStyle){
+						example2ContainerStyle.remove();
+					    }
+					    example2Container.innerHTML +=  `<style>
+						    .example2 .item:nth-of-type(${input2s[1].value}){
+							color:red
+						    }
+						</style>`;
+					})
+					break;
+				}
+			    })
+			    
+			</script>
+		</balcony-area>
+		<wall-area class=" article " id="articleTwo"></wall-area>
+		<foundation-area class=" full-bleed "></foundation-area>
+	</div>
         <footer-area></footer-area>
         <script type="module" src="/components/footer/footer.js"></script>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
-        <script type="module" src="/components/widgetContainer/widgetContainer.js"></script>
+       	<script type="module" src="/components/house/roof.js"></script>
+       	<script type="module" src="/components/house/balcony.js"></script>
+       	<script type="module" src="/components/house/wall.js"></script>
+       	<script type="module" src="/components/house/foundation.js"></script>
         <script type="module"> 
-            const html = `
-            :first-child / :nth-child(n) / :last-child 规则
-                匹配父元素的所有子元素
+            const html1 = `
+:first-child / :nth-child(n) / :last-child 规则
+    匹配父元素的所有子元素
 
-                example1
-                <div class="example1">
-                    <div>div1</div>
-                    <div class="item">div2</div>
-                    <span class="item">span1</span>
-                    <span>span2</span>
-                    <a>a1</a>
-                    <a>a2</a>
-                </div>
-                
-                div1所在的元素是example1的:first-child,
-                a2是:last-child,
-                div2是:nth-child(2) 
-                其他以此类推。
+    example1
+    <div class="example1">
+        <div>div1</div>
+        <div class="item">div2</div>
+        <span class="item">span1</span>
+        <span>span2</span>
+        <a>a1</a>
+        <a>a2</a>
+    </div>
+    
+    div1所在的元素是example1的:first-child,
+    a2是:last-child,
+    div2是:nth-child(2) 
+    其他以此类推。
 
-                如果用.item:nth-child(n):{color:red}
-                当n=1时,命中的div1因为它的class不是.item所以字体不会变红。
-                当n=2时,命中div2因为它的class是.item所以字体会变红。
-                以此类推。
-
-                first-of-type / nth-of-type(n) / last-of-type 规则
-                将父元素的所有子元素按元素类型分组，再进行匹配。
-
-                example2
-                <div class="example2">
-                    <div>div1</div>
-                    <div class="item">div2</div>
-                    <span class="item">span1</span>
-                    <span>span2</span>
-                    <a>a1</a>
-                    <a>a2</a>
-                </div>
-
-                浏览器会将example2的子元素按元素类型进行分组:
-                [div1,div2]、[span1,span2]、[a1,a2].
- 
-                此时.example2 *:first-of-type指代div1、span1、a1。
-                .example2 *:nth-of-type(2)指代div2、span2、a2。
-                .example2 *:last-of-type指代div2、span2、a2。
-
-                如果用.item:nth-of-type(n):{color:red};
-                当n=1时,会命中各个分组里的第一项:div1、span1、a1,
-                其中只有class为.item的span1字会变红,div1、a1不变。
-                当n=2时,会命中各个分组里的第二项:div2、span2、a2,
-                其中只有class为.item的div2字会变红,span2、a2不变。
-                以此类推。
+    如果用.item:nth-child(n):{color:red}
+    当n=1时,命中的div1因为它的class不是.item所以字体不会变红。
+    当n=2时,命中div2因为它的class是.item所以字体会变红。
+    以此类推。
             `
+	    const html2 = `
+first-of-type / nth-of-type(n) / last-of-type 规则
+将父元素的所有子元素按元素类型分组，再进行匹配。
+
+example2
+<div class="example2">
+    <div>div1</div>
+    <div class="item">div2</div>
+    <span class="item">span1</span>
+    <span>span2</span>
+    <a>a1</a>
+    <a>a2</a>
+</div>
+
+浏览器会将example2的子元素按元素类型进行分组:
+[div1,div2]、[span1,span2]、[a1,a2].
+
+此时.example2 *:first-of-type指代div1、span1、a1。
+.example2 *:nth-of-type(2)指代div2、span2、a2。
+.example2 *:last-of-type指代div2、span2、a2。
+
+如果用.item:nth-of-type(n):{color:red};
+当n=1时,会命中各个分组里的第一项:div1、span1、a1,
+其中只有class为.item的span1字会变红,div1、a1不变。
+当n=2时,会命中各个分组里的第二项:div2、span2、a2,
+其中只有class为.item的div2字会变红,span2、a2不变。
+以此类推。
+	    `
             const css =''
             const js = ``;
-            const code = JSON.stringify({
-                '':{js,css,html}
+            const article1 = JSON.stringify({
+                '':{js,css,html:html1}
             }) 
-            document.querySelector("widget-container").setAttribute("article",code);
+            const article2 = JSON.stringify({
+                '':{js,css,html:html2}
+            }) 
+            document.querySelector("#articleOne").setAttribute("article",article1);
+            document.querySelector("#articleTwo").setAttribute("article",article2);
         </script>
     </body>
 </html>

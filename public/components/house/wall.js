@@ -3,41 +3,17 @@ template.innerHTML = /*html*/`
     <link rel="stylesheet" href="/components/css/theme/srcery.css">
     <style>
     	.x{
-		position: relative;
-	}
-        .article {
-		display: grid;
-		grid-template-columns: 1fr min( 65ch, 100% - 2rem ) 1fr;
-		column-gap: 1rem;
-        }
-	.article > * {
-		grid-column: 2; 
-	}
-	.full-bleed{
-		width: 100%;
-		grid-column: 1 / -1;
-	}
-        .aside{
-		position: sticky;
-		top:.2rem;
-		left:.2rem;
-        }
-        .widget-article{
             background-color:rgb( 229,221,170 );
-        }
+	}
         .pre{
             margin:0;
         }
-        .widget-content{
+        .article{
             white-space: pre-wrap;
             word-break:break-all;
         }
     </style>
     <main class=" x ">
-        <aside class="widget-aside">
-            <slot name="aside"></slot>
-        </aside>
-        <article class="widget-article">
             <select name="themes" id="themes-select">
                 <option value="srcery">srcery</option>
                 <option value="rainbow">rainbow</option>
@@ -46,10 +22,9 @@ template.innerHTML = /*html*/`
                 <option value="color-brewer">color-brewer</option>
             </select>
             <pre class="pre">
-                <code class="widget-content">
+                <code class="article" id="article">
                 </code>
             </pre>
-        </article>
     </main>
 `
 import hljs from "/utils/highlight/core.js";
@@ -60,12 +35,12 @@ import xml from "/utils/highlight/languages/xml.js"
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('css', css);
 hljs.registerLanguage("xml",xml)
-class WidgetContainer extends HTMLElement{
+class Wall extends HTMLElement{
     constructor(){
         super();
         this._shadowRoot = this.attachShadow({mode:'closed'});
         this._shadowRoot.appendChild(template.content.cloneNode(true))
-        this.$article = this._shadowRoot.querySelector(".widget-content");
+        this.$article = this._shadowRoot.querySelector("#article");
         this.$linkElement = this._shadowRoot.querySelector("link")
         this.$theme = this._shadowRoot.querySelector("#themes-select")
     }
@@ -79,6 +54,7 @@ class WidgetContainer extends HTMLElement{
     }
     attributeChangedCallback(attrName, oldVal, newVal){
         const valParsed = JSON.parse(newVal)
+	console.log(valParsed);
         for(let key in valParsed){
             const {css,html,js} = valParsed[key];
             console.log(css,html,js)
@@ -111,4 +87,4 @@ class WidgetContainer extends HTMLElement{
         }
     }
 }
-customElements.define('widget-container', WidgetContainer);
+customElements.define('wall-area', Wall );
