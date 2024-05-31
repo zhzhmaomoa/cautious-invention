@@ -2,17 +2,24 @@
 <html>
     <head>
         <link rel="stylesheet" href="/components/css/index.css" />
+        <link rel="stylesheet" href="/components/house/house.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
-        <widget-container>
-            <div slot="aside">
-            </div>
-        </widget-container>
+	<div class=" com-house ">
+		<roof-area class=" full-bleed "></roof-area>
+		<balcony-area class=" code ">
+		</balcony-area>
+		<wall-area class=" article " id="article"></wall-area>
+		<foundation-area class=" full-bleed "></foundation-area>
+	</div>
         <footer-area></footer-area>
         <script type="module" src="/components/footer/footer.js"></script>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
-        <script type="module" src="/components/widgetContainer/widgetContainer.js"></script>
+       	<script type="module" src="/components/house/roof.js"></script>
+       	<script type="module" src="/components/house/balcony.js"></script>
+       	<script type="module" src="/components/house/wall.js"></script>
+       	<script type="module" src="/components/house/foundation.js"></script>
         <script type="module">
             const html = ``
             const css =''
@@ -33,7 +40,7 @@ person.a = "213" //直接使用person.a 的方式创建的属性configurable/wri
             const code = JSON.stringify({
                 '':{js,css,html}
             }) 
-            document.querySelector("widget-container").setAttribute("article",code);
+            document.querySelector("#article").setAttribute("article",code);
         </script>
     </body>
 </html>

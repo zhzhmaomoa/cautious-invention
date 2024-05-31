@@ -1,8 +1,6 @@
 const html = `
 <div class="button" >
-    span
-    按钮
-    Over the
+点我
 </div>
 `;
 const css = `
@@ -11,7 +9,7 @@ const css = `
     background-color: #252329;
     width: 160px;
     height: 90px;
-    margin:200px 200px;
+    margin-left:20px;
     color:#9689b7;
     text-align: center;
     line-height: 90px;

@@ -38,8 +38,8 @@ const html = `
 `;
 const css = `
 .image{
-    width: 20vw;
-    height:15vw;
+    width: 200px;
+    height:150px;
     position: absolute;
 }
 .centerImage{
@@ -96,9 +96,9 @@ const css = `
     transition-timing-function: linear;
 }
 .container{
-    width: 30vw;
-    height: 20vw;
-    margin-left: 10vw;
+    width: 300px;
+    height: 200px;
+    margin-left: 10px;
     background-color: black;
     position: relative;
 }   `

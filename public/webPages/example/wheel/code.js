@@ -77,7 +77,7 @@ const css = `
   }
   .main{
     transform-style:preserve-3d;
-    padding: 200px;
+    padding: 200px 10px;
     width: 200px;
     height: 300px;
     transition: transform 1s;
