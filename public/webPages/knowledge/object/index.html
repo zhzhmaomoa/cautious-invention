@@ -6,13 +6,12 @@
     </head>
     <body>
         <navigation-bar></navigation-bar>
-	<div class=" com-house ">
-		<roof-area class=" full-bleed "></roof-area>
-		<balcony-area class=" code ">
-		</balcony-area>
-		<wall-area class=" article " id="article"></wall-area>
-		<foundation-area class=" full-bleed "></foundation-area>
-	</div>
+        <div class=" com-house ">
+            <roof-area class=" full-bleed "></roof-area>
+            <balcony-area class=" code "></balcony-area>
+            <wall-area class=" article " id="article"></wall-area>
+            <foundation-area class=" full-bleed "></foundation-area>
+        </div>
         <footer-area></footer-area>
         <script type="module" src="/components/footer/footer.js"></script>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
@@ -37,11 +36,11 @@ Object.defineProperty(person,"name",{
 
 person.a = "213" //直接使用person.a 的方式创建的属性configurable/writable/enumerable都是true
 //Object.defineProperty()创建的属性configurable/writable/enumerable 缺省值都是false`;
-            const code = JSON.stringify({
+            const code = {
                 '':{js,css,html}
-            }) 
-            document.querySelector("#article").setAttribute("article",code);
-        </script>
+            }
+            document.querySelector("#article").content=code;
+            </script>
     </body>
 </html>
 

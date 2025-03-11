@@ -1,4 +1,4 @@
-const code1 =JSON.stringify({
+const code1 ={
 	'':{
 		js:`
 form2.addEventListener("submit",(e)=>{
@@ -20,8 +20,8 @@ form2.addEventListener("submit",(e)=>{
 </form>
 `
 	}
-}) 
-const code2 = JSON.stringify({
+}
+const code2 ={
 	'':{
 		html:`
 <h3>发送post请求的表单</h3>
@@ -62,7 +62,7 @@ form5.addEventListener("submit",(e)=>{
 })  
 `
 	}
-})
+}
 export default {
 	code1,code2
 }

@@ -1,5 +1,6 @@
+import { html } from '/utils/html.js';
 const template = document.createElement("template");
-template.innerHTML = /*html*/`
+template.innerHTML = html`
     <link rel="stylesheet" href="/components/css/theme/srcery.css">
     <style>
     	.x{
@@ -18,7 +19,7 @@ template.innerHTML = /*html*/`
                 <option value="srcery">srcery</option>
                 <option value="rainbow">rainbow</option>
                 <option value="panda-syntax-ligh">panda-syntax-light</option>
-                <option value="lioshi">lioshi</opton>
+                <option value="lioshi">lioshi</option>
                 <option value="color-brewer">color-brewer</option>
             </select>
             <pre class="pre">
@@ -42,28 +43,22 @@ class Wall extends HTMLElement{
         this._shadowRoot.appendChild(template.content.cloneNode(true))
         this.$article = this._shadowRoot.querySelector("#article");
         this.$linkElement = this._shadowRoot.querySelector("link")
-        this.$theme = this._shadowRoot.querySelector("#themes-select")
+        this.$theme = this._shadowRoot.querySelector("#themes-select");
+        this.articleContent = null;
     }
     connectedCallback(){
         this.$theme.addEventListener("change",()=>{
             this.selectTheme();
         })
     }
-    static get observedAttributes() {
-        return ['article'];
-    }
-    attributeChangedCallback(attrName, oldVal, newVal){
-        const valParsed = JSON.parse(newVal)
-	console.log(valParsed);
-        for(let key in valParsed){
-            const {css,html,js} = valParsed[key];
-            console.log(css,html,js)
+    set content(val){
+        for(let key in val){
+            const {css,html,js} = val[key];
             const cssBeautify = hljs.highlight(css, {language: 'css'}).value;
             const htmlBeautify = hljs.highlight(html, {language: 'xml'}).value;
             const jsBeautify = hljs.highlight(js, {language: 'javascript'}).value;
             this.$article.innerHTML += key+'\n' + cssBeautify + htmlBeautify + jsBeautify
         }
-       
     }
     selectTheme(){
         switch(this.$theme.value){

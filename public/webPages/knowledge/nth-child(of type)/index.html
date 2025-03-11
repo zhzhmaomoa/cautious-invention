@@ -258,14 +258,14 @@ example2
 	    `
             const css =''
             const js = ``;
-            const article1 = JSON.stringify({
+            const article1 = {
                 '':{js,css,html:html1}
-            }) 
-            const article2 = JSON.stringify({
+            }
+            const article2 = {
                 '':{js,css,html:html2}
-            }) 
-            document.querySelector("#articleOne").setAttribute("article",article1);
-            document.querySelector("#articleTwo").setAttribute("article",article2);
+            }
+			document.querySelector("#articleOne").content=article1;
+			document.querySelector("#articleTwo").content=article2;
         </script>
     </body>
 </html>

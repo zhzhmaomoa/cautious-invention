@@ -45,7 +45,6 @@ const html = `
 </nav>
 `
 const js = `空`;
-const code = JSON.stringify({
+export default {
     '':{js,css,html}
-}) 
-export default code;
+};

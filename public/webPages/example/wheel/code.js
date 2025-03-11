@@ -284,8 +284,7 @@ const appletHtml =`
 </view>
 `
 const appletCss = 'css与web版一致';
-const code =JSON.stringify({
-    'web版':{js,css,html},
-    '小程序版':{js:appletJs,css:appletCss,html:appletHtml}
-}) 
-export default code
+export default {
+  'web版':{js,css,html},
+  '小程序版':{js:appletJs,css:appletCss,html:appletHtml}
+}

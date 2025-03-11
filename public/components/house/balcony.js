@@ -1,5 +1,6 @@
+import { html } from '/utils/html.js';
 const template = document.createElement("template");
-template.innerHTML = `
+template.innerHTML = html`
 	<style>
 		.code{
 			position:sticky;

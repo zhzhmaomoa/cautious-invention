@@ -102,7 +102,6 @@ const css = `
     background-color: black;
     position: relative;
 }   `
-const code = JSON.stringify({
+export default {
     '':{js,css,html}
-}) 
-export default code;
+};

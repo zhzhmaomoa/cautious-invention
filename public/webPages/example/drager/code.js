@@ -1,3 +1,4 @@
+
 const js = `
 const selectedItem  = document.querySelector("#selectedItem");
 selectedItem.firstChild.nodeValue = 2023;
@@ -116,7 +117,6 @@ const html = `
     当前选中项:<div id="selectedItem"> </div>
 </div>
 `;
-const code =JSON.stringify({
+export default {
     '':{js,css,html}
-}) 
-export default code
+}

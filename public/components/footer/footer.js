@@ -1,5 +1,6 @@
+import { html } from '/utils/html.js';
 const template = document.createElement("template");
-template.innerHTML = /*html*/`
+template.innerHTML = html`
     <style>
       .header{
           background:

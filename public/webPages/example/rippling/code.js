@@ -60,7 +60,6 @@ button.addEventListener("click",(e)=>{
 })
 `;
 
-const code = JSON.stringify({
+export default {
     '':{js,css,html}
-}) 
-export default code;
+};
