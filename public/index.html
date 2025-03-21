@@ -85,7 +85,6 @@
             .cloud{
                 position: absolute;
                 top:var(--top);
-                left: var(--left);
                 width: 4.38rem;height: 4.38rem;
                 color:white;
                 -webkit-text-fill-color:black;
@@ -102,10 +101,10 @@
             }
             @keyframes cloud-move {
                 0%{
-                    margin-left: 120%;
+                    left: 120%;
                 }
                 100%{
-                    margin-left: -20%;
+                    left: -20%;
                 }
             }
             .cloud:hover{
@@ -147,8 +146,10 @@
             </span>
         </div>
         <footer-area></footer-area>
+        <bottom-of-water></bottom-of-water>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
         <script type="module" src="/components/footer/footer.js"></script>
+        <script type="modult" src="/components/bottomOfWater/index.js"></script>
     </body>
 </html>
 
