@@ -4,7 +4,7 @@ template.innerHTML = html`
 	<style>
 		.x{
 			text-align:center;
-			--width:calc( 65ch + 12rem );
+			--width:100vw;
 			height:calc( var(--width) / 10 * 2 );
 		}
 		.foundation{

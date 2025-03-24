@@ -5,6 +5,8 @@ template.innerHTML = html`
 		.code{
 			position:sticky;
 			top:0;
+			overflow-x: auto;
+			width:calc((100vw - 2rem - 62vw) / 2)
 		}
 	</style>
 	<div class="code"><slot></slot></div>

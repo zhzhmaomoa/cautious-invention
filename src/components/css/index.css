@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import url("/components/css/tailwindOutput.css");
 html{
-    font-size:16px;
+    /* font-size:16px; */
     overflow-x:hidden;
 }
-@media screen and (min-width:375px){
+/* @media screen and (min-width:375px){
     html{
         font-size: calc(16px + 2 * (100vw - 375px) / 39);
     }
@@ -17,7 +17,7 @@ html{
     html{
         font-size: calc(22px + 5 * (100vw - 1000px) / 1000);
     }
-}
+} */
 body{
     background-color: rgb( 186,204,217 );
     margin: 0;

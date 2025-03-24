@@ -1,7 +1,7 @@
 import { html } from '/utils/html.js';
 const template = document.createElement("template");
 template.innerHTML = html`
-    <link rel="stylesheet" href="/components/css/theme/srcery.css">
+    <link id="highLightLink" rel="stylesheet" href="/components/css/theme/srcery.css">
     <style>
     	.x{
             background-color:rgb( 229,221,170 );
@@ -18,7 +18,7 @@ template.innerHTML = html`
             <select name="themes" id="themes-select">
                 <option value="srcery">srcery</option>
                 <option value="rainbow">rainbow</option>
-                <option value="panda-syntax-ligh">panda-syntax-light</option>
+                <option value="panda-syntax-light">panda-syntax-light</option>
                 <option value="lioshi">lioshi</option>
                 <option value="color-brewer">color-brewer</option>
             </select>
@@ -42,7 +42,7 @@ class Wall extends HTMLElement{
         this._shadowRoot = this.attachShadow({mode:'closed'});
         this._shadowRoot.appendChild(template.content.cloneNode(true))
         this.$article = this._shadowRoot.querySelector("#article");
-        this.$linkElement = this._shadowRoot.querySelector("link")
+        this.$linkElement = this._shadowRoot.querySelector("#highLightLink")
         this.$theme = this._shadowRoot.querySelector("#themes-select");
         this.articleContent = null;
     }
@@ -69,7 +69,7 @@ class Wall extends HTMLElement{
                 this.$linkElement.href = "/components/css/theme/rainbow.css"
                 break;
             case 'panda-syntax-light':
-                this.$linkElement.href = "/components/css/theme/panda-syntax-light.css"
+                this.$linkElement.href = "/components/css/theme/pandaSyntaxLight.css"
                 break;      
             case 'lioshi':
                 this.$linkElement.href = "/components/css/theme/lioshi.css"

@@ -35,4 +35,4 @@ export const htmlEncode = (value) => {
  * html tagged template literal, auto-encodes entities
  */
 export const html = (strings, ...values) => 
-    htmlRaw(String.raw({ raw: strings }, ...values.map(htmlEncode)));
+    htmlRaw(String.raw({ raw: '<link rel="stylesheet" href="/components/css/tailwindOutput.css">'+strings }, ...values.map(htmlEncode)));
