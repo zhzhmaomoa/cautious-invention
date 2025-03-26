@@ -2,13 +2,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="/components/css/index.css" />
-        <link rel="stylesheet" href="/components/house/house.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
-	<div class=" com-house ">
-		<roof-area class=" full-bleed "></roof-area>
-		<balcony-area class=" code ">
+	<div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
+		<roof-area class="w-full col-span-full"></roof-area>
+		<balcony-area class="col-[1]">
 			<h3>发送get请求的表单</h3>//会将查询参数挂在url后面以&分隔
 			<form id="form1" action="http://127.0.0.1:80" method="get" target="_blank">
 			    label:<input type="text" name="name" value="form1">
@@ -27,8 +26,8 @@
 			</script>
 		
 		</balcony-area>
-		<wall-area class=" article " id="articleOne"></wall-area>
-		<balcony-area class="code">
+		<wall-area class="col-[2]" id="articleOne"></wall-area>
+		<balcony-area class="col-[1]">
 			<h3>发送post请求的表单</h3>
 			<h4>使用application/x-www-form-urlencoded方式</h4>  
 			<form id="form3" action="http://127.0.0.1:80" method="post" target="_blank">
@@ -66,8 +65,8 @@
 			</script>
 		
 		</balcony-area>
-		<wall-area class=" article " id="articleTwo"></wall-area>
-		<foundation-area class=" full-bleed "></foundation-area>
+		<wall-area class="col-[2]" id="articleTwo"></wall-area>
+		<foundation-area class="w-full col-span-full"></foundation-area>
 	</div>
         <footer-area></footer-area>
         <script type="module" src="/components/footer/footer.js"></script>

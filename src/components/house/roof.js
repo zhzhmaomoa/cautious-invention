@@ -4,13 +4,10 @@ template.innerHTML = html`
 	<style>
 		.header{
 			--width:100vw;
-			text-align:center;
 			height:calc( var( --width ) / 8 * 2 );
-			position:relative;
 		}
 		.x{
 			width:var( --width );
-			height:100%;
 		}
 		.wall{
 			fill:rgb( 229,221,170 );
@@ -31,10 +28,10 @@ template.innerHTML = html`
 			stroke:rgb( 229,221,170 );
 		}
 	</style>
-	<header class="header">
-		<svg id="x" class="x" viewBox="0 0 800 200">
+	<header class="header text-center">
+		<svg id="x" class="x h-full" viewBox="0 0 800 200">
 			<polygon id="wall" class="wall"/>
-			<polyline class="roof" points="50,180 400,36 750,180"/> 
+			<polyline class="roof" points="50,180 400,40 750,180"/> 
 
 			<rect class="window" x="300" y="125" width="200" height="50" rx="5"/>
 			<line class="window-line" x1="300" y1="150" x2="500" y2="150"/>
@@ -45,10 +42,10 @@ template.innerHTML = html`
 class Roof extends HTMLElement{
 	constructor(){
 		super();
-		this._shadowRoot = this.attachShadow( {mode:"open"} );
-		this._shadowRoot.appendChild( template.content.cloneNode( true ) );
-		this.$wall = this._shadowRoot.querySelector("#wall");
-		this.$x= this._shadowRoot.querySelector("#x");
+		this.attachShadow( {mode:"open"} );
+		this.shadowRoot.appendChild( template.content.cloneNode( true ) );
+		this.$wall = this.shadowRoot.querySelector("#wall");
+		this.$x= this.shadowRoot.querySelector("#x");
 	}
 	connectedCallback(){
 		const xWidth = this.$x.clientWidth;

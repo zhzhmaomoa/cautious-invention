@@ -7,8 +7,8 @@ template.innerHTML = html`
     <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <radialGradient id="bubbleGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
-        <stop offset="0%" style="stop-color:white;stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:lightblue;stop-opacity:0.3" />
+            <stop offset="0%" style="stop-color:white;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:lightblue;stop-opacity:0.3" />
         </radialGradient>
     </defs>
     <circle cx="50" cy="200" r="20" fill="url(#bubbleGradient)" stroke="lightblue" stroke-width="2">
@@ -30,8 +30,8 @@ template.innerHTML = html`
 class BottomOfWater extends HTMLElement {
     constructor() {
       super();
-      this._shadowRoot = this.attachShadow({mode:'closed'})
-      this._shadowRoot.appendChild(template.content.cloneNode(true))
+      this.attachShadow({mode:'open'})
+      this.shadowRoot.appendChild(template.content.cloneNode(true))
     }
 }
 customElements.define('bottom-of-water', BottomOfWater);

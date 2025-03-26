@@ -2,163 +2,162 @@
 <html>
     <head>
         <link rel="stylesheet" href="/components/css/index.css" />
-        <link rel="stylesheet" href="/components/house/house.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
-	<div class=" com-house ">
-		<roof-area class=" full-bleed "></roof-area>
-		<balcony-area class=" code ">
-			<style>
-			    .stage{
-				perspective: 800px;
-			    }
-			    .main{
-				transform-style:preserve-3d;
-				padding: 200px 10px;
-				width: 200px;
-				height: 300px;
-				transition: transform 1s;
-				position: relative;
-				margin:auto;
-			    }
-			    .piece{
-				transform-style:preserve-3d;
-				width: inherit;
-				height: inherit;
-				color:white;
-				position: absolute;
-				--pieceTransform:rotateX( calc(var(--index) * 60deg)) translateZ(259.8px);
-				transform: var(--pieceTransform);
-				transition: transform 1s;
-				cursor: pointer;
-				user-select: none;
-			    }
-			    .piece.active{
-				transform: var(--pieceTransform) rotateY(180deg);
-			    }
-			    .piece:nth-child(2n){
-				background-color: #302f4b;
-			    }
-			    .piece:nth-child(2n+1){
-				background-color: #5dbe8a;
-			    }
-			    .face,.back{
-				width: inherit;
-				height: inherit;
-				position: absolute;
-				backface-visibility: hidden;
-				transform: rotateX(0deg);
-			    }
-			    .back{
-				transform: rotateY(180deg);
-			    }
-			</style>
-			<div class="stage" id="stage">
-			    <main id="main" class="main">
-			      <section class="piece" style="--index:0" status="current" >
-				<div class="face">1</div>
-				<div class="back">背面1</div>
-			      </section>
-			      <section class="piece" style="--index:1" status="next">
-				<div class="face">2</div>
-				<div class="back">背面2</div>
-			      </section>
-			      <section class="piece" style="--index:2">
-				<div class="face">3</div>
-				<div class="back">背面3</div>
-			      </section>
-			      <section class="piece" style="--index:3">
-				<div class="face">4</div>
-				<div class="back">背面4</div>
-			      </section>
-			      <section class="piece" style="--index:4">
-				<div class="face">5</div>
-				<div class="back">背面5</div>
-			      </section>
-			      <section class="piece" style="--index:5" status="prev">
-				<div class="face">6</div>
-				<div class="back">背面6</div>
-			      </section>
-			    </main>
-			</div>
-			<script>
-			    class Wheel{
-			      constructor(stage,container){
-				this.rotateFriction = 0;
-				this.isDragging =false;
-				this.lastYPosition = 0;
-				this.stage = stage;
-				this.container = container;
-				this.initStage();
-				this.initContainer();
-			      }
-			      initStage(){
-				this.stage.addEventListener("mousedown",(e)=>{
-				  this.isDragging = true;
-				  this.lastYPosition = e.screenY;
-				})
-				this.stage.addEventListener("mousemove",(e)=>{
-				  if(!this.isDragging)return;
-				  if(e.screenY-this.lastYPosition>100){
-				    this.rollDown()
-				    this.lastYPosition=e.screenY;
-				  }else if(e.screenY-this.lastYPosition< -100){
-				    this.rollUp()
-				    this.lastYPosition=e.screenY;
-				  }
-				})
-				this.stage.addEventListener("mouseup",(e)=>{
-				  this.isDragging = false;
-				  this.lastYPosition=0;
-				})
-				this.stage.addEventListener("mouseleave",(e)=>{
-				  this.isDragging = false;
-				  this.lastYPosition=0;
-				})
-			      }
-			      initContainer(){
-				for(let item of this.container.children){
-				  item.addEventListener("click",()=>{
-				    if(item.getAttribute('status')==='current'){
-				      item.classList.toggle("active")
-				    }
-				  })
-				}
-			      }
-			      findCurrent(){
-				for(let ele of this.container.children){ 
-				  if(ele.getAttribute("status")==='current'){
-				    return ele;
-				  }
-				}
-			      }
-			      setCurrent(that){
-				const prev = that.previousElementSibling?that.previousElementSibling:that.parentElement.lastElementChild;
-				const next = that.nextElementSibling?that.nextElementSibling:that.parentElement.firstElementChild;
-				prev.setAttribute("status","prev")
-				next.setAttribute("status","next")
-				that.setAttribute("status","current")
-			      }
-			      rollDown(){
-				const currentEle = this.findCurrent();
-				this.rotateFriction--;
-				this.container.style = `transform:rotateX(${this.rotateFriction * 60}deg)`;
-				this.setCurrent(currentEle.nextElementSibling?currentEle.nextElementSibling:currentEle.parentElement.firstElementChild);
-			      }
-			      rollUp(){
-				const currentEle = this.findCurrent();
-				this.rotateFriction++;
-				this.container.style = `transform:rotateX(${this.rotateFriction * 60}deg)`;
-				this.setCurrent(currentEle.previousElementSibling?currentEle.previousElementSibling:currentEle.parentElement.lastElementChild);
-			      }
-			    }
-			    new Wheel(stage,main)
-			</script>
-		</balcony-area>
-		<wall-area class=" article " id="article"></wall-area>
-		<foundation-area class=" full-bleed "></foundation-area>
-	</div>
+		<div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
+			<roof-area class="w-full col-span-full"></roof-area>
+			<balcony-area class="col-[1] ">
+				<style>
+					.stage{
+					perspective: 800px;
+					}
+					.main{
+					transform-style:preserve-3d;
+					padding: 200px 10px;
+					width: 200px;
+					height: 300px;
+					transition: transform 1s;
+					position: relative;
+					margin:auto;
+					}
+					.piece{
+					transform-style:preserve-3d;
+					width: inherit;
+					height: inherit;
+					color:white;
+					position: absolute;
+					--pieceTransform:rotateX( calc(var(--index) * 60deg)) translateZ(259.8px);
+					transform: var(--pieceTransform);
+					transition: transform 1s;
+					cursor: pointer;
+					user-select: none;
+					}
+					.piece.active{
+					transform: var(--pieceTransform) rotateY(180deg);
+					}
+					.piece:nth-child(2n){
+					background-color: #302f4b;
+					}
+					.piece:nth-child(2n+1){
+					background-color: #5dbe8a;
+					}
+					.face,.back{
+					width: inherit;
+					height: inherit;
+					position: absolute;
+					backface-visibility: hidden;
+					transform: rotateX(0deg);
+					}
+					.back{
+					transform: rotateY(180deg);
+					}
+				</style>
+				<div class="stage" id="stage">
+					<main id="main" class="main">
+					<section class="piece" style="--index:0" status="current" >
+					<div class="face">1</div>
+					<div class="back">背面1</div>
+					</section>
+					<section class="piece" style="--index:1" status="next">
+					<div class="face">2</div>
+					<div class="back">背面2</div>
+					</section>
+					<section class="piece" style="--index:2">
+					<div class="face">3</div>
+					<div class="back">背面3</div>
+					</section>
+					<section class="piece" style="--index:3">
+					<div class="face">4</div>
+					<div class="back">背面4</div>
+					</section>
+					<section class="piece" style="--index:4">
+					<div class="face">5</div>
+					<div class="back">背面5</div>
+					</section>
+					<section class="piece" style="--index:5" status="prev">
+					<div class="face">6</div>
+					<div class="back">背面6</div>
+					</section>
+					</main>
+				</div>
+				<script>
+					class Wheel{
+					constructor(stage,container){
+					this.rotateFriction = 0;
+					this.isDragging =false;
+					this.lastYPosition = 0;
+					this.stage = stage;
+					this.container = container;
+					this.initStage();
+					this.initContainer();
+					}
+					initStage(){
+					this.stage.addEventListener("mousedown",(e)=>{
+					this.isDragging = true;
+					this.lastYPosition = e.screenY;
+					})
+					this.stage.addEventListener("mousemove",(e)=>{
+					if(!this.isDragging)return;
+					if(e.screenY-this.lastYPosition>100){
+						this.rollDown()
+						this.lastYPosition=e.screenY;
+					}else if(e.screenY-this.lastYPosition< -100){
+						this.rollUp()
+						this.lastYPosition=e.screenY;
+					}
+					})
+					this.stage.addEventListener("mouseup",(e)=>{
+					this.isDragging = false;
+					this.lastYPosition=0;
+					})
+					this.stage.addEventListener("mouseleave",(e)=>{
+					this.isDragging = false;
+					this.lastYPosition=0;
+					})
+					}
+					initContainer(){
+					for(let item of this.container.children){
+					item.addEventListener("click",()=>{
+						if(item.getAttribute('status')==='current'){
+						item.classList.toggle("active")
+						}
+					})
+					}
+					}
+					findCurrent(){
+					for(let ele of this.container.children){ 
+					if(ele.getAttribute("status")==='current'){
+						return ele;
+					}
+					}
+					}
+					setCurrent(that){
+					const prev = that.previousElementSibling?that.previousElementSibling:that.parentElement.lastElementChild;
+					const next = that.nextElementSibling?that.nextElementSibling:that.parentElement.firstElementChild;
+					prev.setAttribute("status","prev")
+					next.setAttribute("status","next")
+					that.setAttribute("status","current")
+					}
+					rollDown(){
+					const currentEle = this.findCurrent();
+					this.rotateFriction--;
+					this.container.style = `transform:rotateX(${this.rotateFriction * 60}deg)`;
+					this.setCurrent(currentEle.nextElementSibling?currentEle.nextElementSibling:currentEle.parentElement.firstElementChild);
+					}
+					rollUp(){
+					const currentEle = this.findCurrent();
+					this.rotateFriction++;
+					this.container.style = `transform:rotateX(${this.rotateFriction * 60}deg)`;
+					this.setCurrent(currentEle.previousElementSibling?currentEle.previousElementSibling:currentEle.parentElement.lastElementChild);
+					}
+					}
+					new Wheel(stage,main)
+				</script>
+			</balcony-area>
+			<wall-area class="col-[2]" id="article"></wall-area>
+			<foundation-area class="w-full col-span-full"></foundation-area>
+		</div>
         <footer-area></footer-area>
         <script type="module" src="/components/footer/footer.js"></script>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>

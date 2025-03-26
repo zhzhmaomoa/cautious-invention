@@ -1,29 +1,22 @@
 import { html } from '/utils/html.js';
 const template = document.createElement("template");
 template.innerHTML = html`
-    <link id="highLightLink" rel="stylesheet" href="/components/css/theme/srcery.css">
+    <link id="highLightLink" rel="stylesheet" href="/components/css/theme/pandaSyntaxLight.css">
     <style>
     	.x{
             background-color:rgb( 229,221,170 );
-	}
-        .pre{
-            margin:0;
-        }
-        .article{
-            white-space: pre-wrap;
-            word-break:break-all;
-        }
+	    }
     </style>
-    <main class=" x ">
+    <main class=" x  px-4">
             <select name="themes" id="themes-select">
                 <option value="srcery">srcery</option>
                 <option value="rainbow">rainbow</option>
-                <option value="panda-syntax-light">panda-syntax-light</option>
+                <option value="panda-syntax-light" selected>panda-syntax-light</option>
                 <option value="lioshi">lioshi</option>
                 <option value="color-brewer">color-brewer</option>
             </select>
-            <pre class="pre">
-                <code class="article" id="article">
+            <pre class="m-0">
+                <code class="whitespace-pre-wrap break-all" id="article">
                 </code>
             </pre>
     </main>
@@ -39,12 +32,11 @@ hljs.registerLanguage("xml",xml)
 class Wall extends HTMLElement{
     constructor(){
         super();
-        this._shadowRoot = this.attachShadow({mode:'closed'});
-        this._shadowRoot.appendChild(template.content.cloneNode(true))
-        this.$article = this._shadowRoot.querySelector("#article");
-        this.$linkElement = this._shadowRoot.querySelector("#highLightLink")
-        this.$theme = this._shadowRoot.querySelector("#themes-select");
-        this.articleContent = null;
+        this.attachShadow({mode:'open'});
+        this.shadowRoot.appendChild(template.content.cloneNode(true))
+        this.$article = this.shadowRoot.querySelector("#article");
+        this.$linkElement = this.shadowRoot.querySelector("#highLightLink")
+        this.$theme = this.shadowRoot.querySelector("#themes-select");
     }
     connectedCallback(){
         this.$theme.addEventListener("change",()=>{

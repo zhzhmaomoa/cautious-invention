@@ -2,120 +2,119 @@
 <html>
     <head>
         <link rel="stylesheet" href="/components/css/index.css" />
-        <link rel="stylesheet" href="/components/house/house.css" />
     </head>
     <body>
         <navigation-bar></navigation-bar>
-	<div class=" com-house ">
-		<roof-area class=" full-bleed "></roof-area>
-		<balcony-area class=" code ">
-			<style>
-			    .image{
-				width: 200px;
-				height:150px;
-				position: absolute;
-			    }
-			    .centerImage{
-				top:50%;
-				left:50%;
-				translate: -50% -50%;
-				z-index: 2;
-				transition-property:left right scale;
-				transition-duration: 1s;
-				transition-timing-function: linear;
-			    }
-			    .leftImage{
-				top:50%;
-				left:25%;
-				translate: -50% -50%;
-				scale:75%;
-				opacity: 1;
-				z-index: 1;
-				transition-property:left right scale opacity;
-				transition-duration: 1s;
-				transition-timing-function: linear;
-			    }
-			    .rightImage{
-				top:50%;
-				left:75%;
-				translate: -50% -50%;
-				scale:75%; 
-				opacity: 1;
-				z-index: 1;
-				transition-property:left right scale opacity;
-				transition-duration: 1s;
-				transition-timing-function: linear;
-			    }
-			    .leftOtherImage{
-				top:50%;
-				left:25%;
-				translate: -50% -50%;
-				scale:75%;
-				z-index: 0;
-				opacity: 0;
-				transition-property:opacity;
-				transition-duration: 2s;
-				transition-timing-function: linear;
-			    }
-			    .rightOtherImage{
-				top:50%;
-				left:75%;
-				translate: -50% -50%;
-				scale:75%; 
-				z-index: 0;
-				opacity: 0;
-				transition-property:opacity;
-				transition-duration: 2s;
-				transition-timing-function: linear;
-			    }
-			    .container{
-				width: 300px;
-				height: 200px;
-				margin-left: 10px;
-				background-color: black;
-				position: relative;
-			    }
-			</style>
-			<div class="container">
-			</div>
-			<script>
-			    const container = document.querySelector(".container");
-			    const imgList = ["./1.jpg","./2.jpg","./3.jpg","./4.jpg","./5.jpg"];
-			    const indicator = {centerImageIndex:2,leftImageIndex:1,rightImageIndex:3};
-			    for(let i = 0; i < imgList.length; i++){
-				const img = document.createElement("img");
-				img.className = 'image';
-				img.src = imgList[i];
-				container.append(img);
-			    }
-			    function handleToggleImg(i){
-				initScroll({centerImageIndex:i,leftImageIndex:i-1,rightImageIndex:i+1});
-			    }
-			    function initScroll(indicator){
-				const imgs = container.children;
-				for(let i = 0; i < imgs.length; i++){
-				    imgs[i].className = 'image';
-				    if(i === indicator.centerImageIndex){
-					imgs[i].classList.add('centerImage');
-				    }else if(i=== indicator.leftImageIndex){
-					imgs[i].classList.add('leftImage');
-					imgs[i].addEventListener("click",function(){handleToggleImg(i)},{once:true});
-				    }else if(i<indicator.leftImageIndex){
-					imgs[i].classList.add('leftOtherImage');
-				    }else if(i===indicator.rightImageIndex){
-					imgs[i].classList.add('rightImage')
-					imgs[i].addEventListener("click",function(){handleToggleImg(i)},{once:true})
-				    }else if(i > indicator.rightImageIndex){
-					imgs[i].classList.add('rightOtherImage')
-				    }
-				}
-			    }
-			    initScroll(indicator);
-			</script>
-		</balcony-area>
-		<wall-area class=" article " id="article"></wall-area>
-		<foundation-area class=" full-bleed "></foundation-area>
-	</div>
+		<div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
+			<roof-area class="w-full col-span-full"></roof-area>
+			<balcony-area class="col-[1]">
+				<style>
+					.image{
+					width: 200px;
+					height:150px;
+					position: absolute;
+					}
+					.centerImage{
+					top:50%;
+					left:50%;
+					translate: -50% -50%;
+					z-index: 2;
+					transition-property:left right scale;
+					transition-duration: 1s;
+					transition-timing-function: linear;
+					}
+					.leftImage{
+					top:50%;
+					left:25%;
+					translate: -50% -50%;
+					scale:75%;
+					opacity: 1;
+					z-index: 1;
+					transition-property:left right scale opacity;
+					transition-duration: 1s;
+					transition-timing-function: linear;
+					}
+					.rightImage{
+					top:50%;
+					left:75%;
+					translate: -50% -50%;
+					scale:75%; 
+					opacity: 1;
+					z-index: 1;
+					transition-property:left right scale opacity;
+					transition-duration: 1s;
+					transition-timing-function: linear;
+					}
+					.leftOtherImage{
+					top:50%;
+					left:25%;
+					translate: -50% -50%;
+					scale:75%;
+					z-index: 0;
+					opacity: 0;
+					transition-property:opacity;
+					transition-duration: 2s;
+					transition-timing-function: linear;
+					}
+					.rightOtherImage{
+					top:50%;
+					left:75%;
+					translate: -50% -50%;
+					scale:75%; 
+					z-index: 0;
+					opacity: 0;
+					transition-property:opacity;
+					transition-duration: 2s;
+					transition-timing-function: linear;
+					}
+					.container{
+					width: 300px;
+					height: 200px;
+					margin-left: 10px;
+					background-color: black;
+					position: relative;
+					}
+				</style>
+				<div class="container">
+				</div>
+				<script>
+					const container = document.querySelector(".container");
+					const imgList = ["./1.jpg","./2.jpg","./3.jpg","./4.jpg","./5.jpg"];
+					const indicator = {centerImageIndex:2,leftImageIndex:1,rightImageIndex:3};
+					for(let i = 0; i < imgList.length; i++){
+					const img = document.createElement("img");
+					img.className = 'image';
+					img.src = imgList[i];
+					container.append(img);
+					}
+					function handleToggleImg(i){
+					initScroll({centerImageIndex:i,leftImageIndex:i-1,rightImageIndex:i+1});
+					}
+					function initScroll(indicator){
+					const imgs = container.children;
+					for(let i = 0; i < imgs.length; i++){
+						imgs[i].className = 'image';
+						if(i === indicator.centerImageIndex){
+						imgs[i].classList.add('centerImage');
+						}else if(i=== indicator.leftImageIndex){
+						imgs[i].classList.add('leftImage');
+						imgs[i].addEventListener("click",function(){handleToggleImg(i)},{once:true});
+						}else if(i<indicator.leftImageIndex){
+						imgs[i].classList.add('leftOtherImage');
+						}else if(i===indicator.rightImageIndex){
+						imgs[i].classList.add('rightImage')
+						imgs[i].addEventListener("click",function(){handleToggleImg(i)},{once:true})
+						}else if(i > indicator.rightImageIndex){
+						imgs[i].classList.add('rightOtherImage')
+						}
+					}
+					}
+					initScroll(indicator);
+				</script>
+			</balcony-area>
+			<wall-area class="col-[2]" id="article"></wall-area>
+			<foundation-area class="w-full col-span-full"></foundation-area>
+		</div>
         <footer-area></footer-area>
         <script type="module" src="/components/footer/footer.js"></script>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
