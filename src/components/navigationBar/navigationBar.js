@@ -13,6 +13,7 @@ template.innerHTML = html`
     <nav class="header bg-repeat-x flex justify-around items-center h-28 pb-8">
         <a href="/index.html">web</a>
         <a href="/svgPages/index.html">svg</a>
+        <a href="/linuxPages/index.html">linux</a>
     </nav>
 `
 class NavigationBar extends HTMLElement {
