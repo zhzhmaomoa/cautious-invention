@@ -1,6 +1,7 @@
 @import url("/components/css/tailwindOutput.css");
 html{
     overflow-x: hidden;
+    max-width: 100vw;
 }
 body{
     background-color: rgb( 186,204,217 );

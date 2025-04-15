@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/components/css/index.css" />
+    </head>
+    <body>
+        <navigation-bar></navigation-bar>
+	<div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
+		<roof-area class="w-full col-span-full"></roof-area>
+		<balcony-area class="col-[1]">
+            <div id="div1">
+                <div id="div2">
+                  <div id="div3">
+                    <div id="div4">
+          
+                    </div>
+                  </div>
+                </div>
+            </div>
+			<script>
+			    function test(e) {
+                    div4.insertAdjacentHTML = `${e.target.id}, ${e.currentTarget.id}, ${e.eventPhase}`
+                }
+                const bubbleEv = new Event("bubbleEv",{bubbles:true})
+                div1.addEventListener("bubbleEv", test)
+                div2.addEventListener("bubbleEv", test,{capture: true})
+                div3.addEventListener("bubbleEv", test)
+                div4.addEventListener("bubbleEv", test,{capture: true})
+                div4.dispatchEvent(bubbleEv)
+			</script>
+		</balcony-area>
+		<wall-area class="col-[2]" id="articleOne"></wall-area>
+		<balcony-area class="col-[1]">
+            <div id="div5">
+                <div id="div6">
+                  <div id="div7">
+                    <div id="div8">
+          
+                    </div>
+                  </div>
+                </div>
+            </div>
+			<script>
+                function test(e) {
+                    div8.innerHTML = `${e.target.id}, ${e.currentTarget.id}, ${e.eventPhase}`
+                }
+			    const ev =new Event("ev")
+                div5.addEventListener("ev", test)
+                div6.addEventListener("ev", test,{capture: true})
+                div7.addEventListener("ev", test)
+                div8.addEventListener("ev", test)
+                div8.dispatchEvent(ev)
+			</script>
+		</balcony-area>
+		<wall-area class="col-[2]" id="articleTwo"></wall-area>
+		<foundation-area class="w-full col-span-full"></foundation-area>
+	</div>
+        <footer-area></footer-area>
+        <script type="module" src="/components/footer/footer.js"></script>
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
+       	<script type="module" src="/components/house/roof.js"></script>
+       	<script type="module" src="/components/house/balcony.js"></script>
+       	<script type="module" src="/components/house/wall.js"></script>
+       	<script type="module" src="/components/house/foundation.js"></script>
+        <script type="module">
+		import code from "./code.js"
+		document.querySelector("#articleOne").content=code.code1;
+		document.querySelector("#articleTwo").content=code.code2;
+        </script>
+    </body>
+</html>
+
