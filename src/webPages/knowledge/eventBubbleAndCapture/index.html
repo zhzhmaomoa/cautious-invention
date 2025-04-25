@@ -19,7 +19,7 @@
             </div>
 			<script>
 			    function test(e) {
-                    div4.insertAdjacentHTML = `${e.target.id}, ${e.currentTarget.id}, ${e.eventPhase}`
+                    div4.insertAdjacentHTML('beforeend',`<div>${e.target.id}, ${e.currentTarget.id}, ${e.eventPhase}</div>`)
                 }
                 const bubbleEv = new Event("bubbleEv",{bubbles:true})
                 div1.addEventListener("bubbleEv", test)
@@ -42,7 +42,7 @@
             </div>
 			<script>
                 function test(e) {
-                    div8.innerHTML = `${e.target.id}, ${e.currentTarget.id}, ${e.eventPhase}`
+                    div8.insertAdjacentHTML('beforeend',`<div>${e.target.id}, ${e.currentTarget.id}, ${e.eventPhase}</div>`)
                 }
 			    const ev =new Event("ev")
                 div5.addEventListener("ev", test)
