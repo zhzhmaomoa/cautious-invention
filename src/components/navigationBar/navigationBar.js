@@ -14,6 +14,7 @@ template.innerHTML = html`
         <a href="/index.html">web</a>
         <a href="/svgPages/index.html">svg</a>
         <a href="/linuxPages/index.html">linux</a>
+        <a href="/vuePages/index.html">vue</a>
     </nav>
 `
 class NavigationBar extends HTMLElement {

@@ -5,11 +5,11 @@
     </head>
     <body>
         <navigation-bar></navigation-bar>
-	<div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
-		<roof-area class="w-full col-span-full"></roof-area>
-		<wall-area class="col-[2]" id="article"></wall-area>
-		<foundation-area class="w-full col-span-full"></foundation-area>
-	</div>
+        <div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
+            <roof-area class="w-full col-span-full"></roof-area>
+            <wall-area class="col-[2]" id="article"></wall-area>
+            <foundation-area class="w-full col-span-full"></foundation-area>
+        </div>
         <footer-area></footer-area>
         <script type="module" src="/components/footer/footer.js"></script>
         <script type="module" src="/components/navigationBar/navigationBar.js"></script>
@@ -19,11 +19,37 @@
        	<script type="module" src="/components/house/foundation.js"></script>
         <script type="module">
 		document.querySelector("#article").content= {
-            html:`
-                
-            `,
-            css:"",
-            js:""
+            '':{
+                html:``,
+                css:"",
+                js:`
+一、tagged template literal 打标记的模板字符串，可以在声明模板字符串时提供一个函数操纵模板字符串
+    const u = 'sss'
+    const a = \`abcde\${u}fg\`;//普通的模板字符串 abcdesssfg
+    const b = handler\`abcde\${u}fg\`;//打标记的模板字符串 abcdefgsss
+    function handler(strings,...values){// ['abcde','fg'] ['sss']
+        return strings.join("")+values.join("");
+    }
+二、String.raw()方法
+    String.raw()方法返回一个原始字符串，原始字符串是一个不解析转义字符的字符串
+
+    String.raw有两种用法，第一种是将作为template literal tag。
+    const c = \`abcde\\nfg\`;//abcde\\nfg
+    const d = String.raw\`abcde\\nfg\`;// abcde\\\\nfg   会对\\进行转义
+    第二种用法 String.raw({raw:类数组对象},参数1,参数2,...)
+    const e = String.raw({raw:["abcde","fg"]},"sss")//abcdesssfg
+
+    似乎String.raw\`abcde\\nfg\${u}\`; 会在引擎内部处理成String.raw({raw:["a","b","c","d","e","\\\\","n","f","g",""]},"","","","","","","","",u)的形式 
+    它们的结果是'abcde\\\\nfgsss'
+
+三、用处：可以用来批量对字符串中的变量进行转义，提升网站安全性。
+    const html = (strings, ...values) => 
+        htmlRaw(String.raw({ raw: strings }, ...values.map(htmlEncode)));
+    //htmlEncode是一个函数可以对字符串进行转义,htmlRaw用于标记防止重复转义。
+    const a = html\`abcd&<>\` //abcd&amp;&lt;&gt;
+                `
+            }
+
         };
         </script>
     </body>

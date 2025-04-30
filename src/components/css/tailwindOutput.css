@@ -632,6 +632,11 @@ video {
   margin: 0px;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .ml-20 {
   margin-left: 5rem;
 }
@@ -760,6 +765,11 @@ video {
 
 .text-justify {
   text-align: justify;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .outline {
