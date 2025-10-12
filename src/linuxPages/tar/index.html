@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/components/css/index.css" />
+    </head> 
+    <body>
+        <navigation-bar></navigation-bar>
+	<div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
+		<roof-area class="w-full col-span-full"></roof-area>
+		<wall-area class=" col-[2] " id="article"></wall-area>
+		<foundation-area class=" w-full col-span-full "></foundation-area>
+	</div>
+        <footer-area></footer-area>
+        <script type="module" src="/components/footer/footer.js"></script>
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
+       	<script type="module" src="/components/house/roof.js"></script>
+       	<script type="module" src="/components/house/wall.js"></script>
+       	<script type="module" src="/components/house/foundation.js"></script>
+        <script type="module">
+            const html = `
+                打包tar -cvf archive.tar "路径"
+                解包tar -xvf archive.tar
+                解压zip unzip archive.zip
+            `
+            const css =''
+            const js = ``;
+            const code = {
+                '':{js,css,html}
+            }
+            document.querySelector("#article").content=code;
+        </script>
+    </body>
+</html>
+
