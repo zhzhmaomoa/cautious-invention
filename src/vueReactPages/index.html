@@ -4,6 +4,39 @@
         <title>cautious-invention</title>
         <link rel="stylesheet" href="/components/css/index.css" />
         <style>
+            .classfication{
+                position: absolute;
+                inset:6.875rem 0  0 0;
+            }
+            .cloud{
+                position: absolute;
+                top:var(--top);
+                left: var(--left);
+                width: 4.38rem;height: 4.38rem;
+                color:white;
+                -webkit-text-fill-color:black;
+                background-color: currentColor;
+                border-radius: 50%;
+                box-shadow:
+                    -2.5rem 0,
+                    -1.56rem -1.25rem,
+                    0.63rem -0.94rem,
+                    -1.25rem 0.50rem,
+                    0.63rem 0.31rem,
+                    2.19rem 0 0 -0.31rem;
+                animation: cloud-move 30s infinite both linear;
+            }
+            @keyframes cloud-move {
+                0%{
+                    left: 100%;
+                }
+                100%{
+                    left: 0%;
+                }
+            }
+            .cloud:hover{
+                animation-play-state: paused;
+            }
             .title-x{
                 margin:40vh 0;  
                 text-align: center;
@@ -78,90 +111,26 @@
                 -webkit-background-clip: text;
                 background-clip: text;
             }
-            .classfication{
-                position: absolute;
-                inset:6.875rem 0  0 0;
-            }
-            .cloud{
-                position: absolute;
-                top:var(--top);
-                width: 4.38rem;height: 4.38rem;
-                color:white;
-                -webkit-text-fill-color:black;
-                background-color: currentColor;
-                border-radius: 50%;
-                box-shadow:
-                    -2.5rem 0,
-                    -1.56rem -1.25rem,
-                    0.63rem -0.94rem,
-                    -1.25rem 0.50rem,
-                    0.63rem 0.31rem,
-                    2.19rem 0 0 -0.31rem;
-                animation: cloud-move 30s infinite both linear;
-            }
-            @keyframes cloud-move {
-                0%{
-                    left: 120%;
-                }
-                100%{
-                    left: -20%;
-                }
-            }
-            .cloud:hover{
-                animation-play-state: paused;
-            }
         </style>
     </head>
     <body>
         <navigation-bar></navigation-bar>
         <nav class="classfication">
-            <a class="cloud" href="./webPages/example/drager/index.html" style="--top:8.25rem;animation-delay: 0;">
-                drager
+            <a class="cloud" href="./unpack/index.html" style="--top:8.25rem;animation-delay: 0;">
+               解包规则总结 
             </a>
-            <a class="cloud" href="./webPages/example/rippling/index.html" style="--top:16.25rem;animation-delay: 3s;">
-                rippling
-            </a>
-            <a class="cloud" href="./webPages/example/rotation/index.html" style="--top:12.25rem;animation-delay: 6s;">
-                rotation
-            </a>
-            <a class="cloud" href="./webPages/example/tabBar/index.html" style="--top:20.25rem;animation-delay: 9s;">
-                tabBar
-            </a>
-            <a class="cloud" href="./webPages/knowledge/nth-child(of type)/index.html" style="--top:4.25rem;animation-delay: 12s;">
-                :nth-child(of type)
-            </a>
-            <a class="cloud" href="./webPages/knowledge/object/index.html" style="--top:3.25rem;animation-delay: -10s;word-wrap: break-word;">
-                object.defineProperty
-            </a>
-            <a class="cloud" href="./webPages/example/wheel/index.html" style="--top:10.25rem;animation-delay: -8s;">
-                wheel
-            </a>
-            <a class="cloud" href="./webPages/knowledge/form/index.html" style="--top:15.25rem;animation-delay: -10s;">
-                提交表单总结
-            </a>
-            <a class="cloud" href="./webPages/knowledge/taggedTemplates/index.html" style="--top:17.25rem;animation-delay: -14s;">
-                标签模板字符串
-            </a>
-            <a class="cloud" href="./webPages/knowledge/eventBubbleAndCapture/index.html" style="--top:20.25rem;animation-delay: -18s;">
-                事件冒泡与捕获
-            </a>
-            <a class="cloud" href="./webPages/knowledge/image/index.html" style="--top:25.25rem;animation-delay: -15s;">
-                可替换元素的尺寸渲染规则
-            </a>
-            <a class="cloud" href="./webPages/knowledge/scriptTagExecOrder/index.html" style="--top:5.25rem;animation-delay: -15s;">
-                不同的script标签fetch和load顺序
+            <a class="cloud" href="./carousel/index.html" style="--top:8.25rem;animation-delay:-10s;">
+               轮播图
             </a>
         </nav>
         <div class="title-x">
             <span class="title-wave title-text">            
-                cautious-invention
+                vue/react
             </span>
-        </div>
+        </div>      
         <footer-area></footer-area>
-        <bottom-of-water></bottom-of-water>
-        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
         <script type="module" src="/components/footer/footer.js"></script>
-        <script type="module" src="/components/bottomOfWater/index.js"></script>
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
     </body>
 </html>
 

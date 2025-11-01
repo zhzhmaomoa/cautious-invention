@@ -9,7 +9,7 @@
   "scripts": {
     "start": "concurrently \"npm run scan\" \"npm run play\"",
     "play": "node cautiousInvention.js",
-    "scan":"npx tailwindcss -i ./src/components/css/tailwind.css -o ./src/components/css/tailwindOutput.css --watch"
+    "scan": "npx tailwindcss -i ./src/components/css/tailwind.css -o ./src/components/css/tailwindOutput.css --watch"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.3"
   }
 }
