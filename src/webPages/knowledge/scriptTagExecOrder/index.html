@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/components/css/index.css" />
+    </head>
+    <body>
+        <navigation-bar></navigation-bar>
+        <div class="grid grid-cols-[1fr_62vw_1fr] gap-x-4">
+            <roof-area class="w-full col-span-full"></roof-area>
+            	<balcony-area class="col-[1]">
+                    <img src="https://html.spec.whatwg.org/images/asyncdefer.svg" alt="执行顺序图示">
+                </balcony-area>
+            <wall-area class="col-[2]" id="article"></wall-area>
+            <foundation-area class="w-full col-span-full"></foundation-area>
+        </div>
+        <footer-area></footer-area>
+        <script type="module" src="/components/footer/footer.js"></script>
+        <script type="module" src="/components/navigationBar/navigationBar.js"></script>
+       	<script type="module" src="/components/house/roof.js"></script>
+       	<script type="module" src="/components/house/balcony.js"></script>
+       	<script type="module" src="/components/house/wall.js"></script>
+       	<script type="module" src="/components/house/foundation.js"></script>
+        <script type="module">
+		document.querySelector("#article").content= {
+            '':{
+                html:`
+`,
+                css:"",
+                js:`
+不同的<script>标签fetch、execute顺序。一共有plain、async、defer三种类型，然后type=“module” script 的行为与defer一致，可以指定为async类型。
+遇到plain类型script时，会立即fetch，等待js内容下载完毕后立马execute，然后才进行后续代码执行。
+遇到async类型script时，会立即fetch，然后进行后续代码执行， async js的内容下载完毕后立马执行，但不会出现在plain类型前执行的情况。async的代码什么时候执行是不可预测的。
+遇到defer类型script时，会立即fetch，在DOMContentLoaded事件执行前，按defer script出现的次序顺序执行defer script
+
+                `
+            }
+
+        };
+        </script>
+    </body>
+</html>
+
