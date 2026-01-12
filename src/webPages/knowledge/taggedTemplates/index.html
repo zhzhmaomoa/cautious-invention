@@ -43,6 +43,26 @@
     它们的结果是'abcde\\\\nfgsss'
 
 三、用处：可以用来批量对字符串中的变量进行转义，提升网站安全性。
+    class Html extends String { }
+    export const htmlRaw = str => new Html(str);
+    export const htmlEncode = (value) => {
+        // avoid double-encoding the same string
+        if (value instanceof Html) {
+            return value;
+        } else {
+            // https://stackoverflow.com/a/57448862/20980
+            return htmlRaw(
+                String(value).replace(/[&<>'"]/g, 
+                    tag => ({
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        "'": '&#39;',
+                        '"': '&quot;'
+                    }[tag]))
+            );
+        }
+    }
     const html = (strings, ...values) => 
         htmlRaw(String.raw({ raw: strings }, ...values.map(htmlEncode)));
     //htmlEncode是一个函数可以对字符串进行转义,htmlRaw用于标记防止重复转义。
