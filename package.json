@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run scan\" \"npm run play\"",
-    "play": "node cautiousInvention.js",
+    "play": "node index.js",
     "scan": "npx tailwindcss -i ./src/components/css/tailwind.css -o ./src/components/css/tailwindOutput.css --watch"
   },
   "repository": {

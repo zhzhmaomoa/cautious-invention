@@ -18,7 +18,10 @@
        	<script type="module" src="/components/house/foundation.js"></script>
         <script type="module">
             const html = `
+                1. 上传文件到服务器：
                 scp -i "密钥路径" -P 端口 "本地文件路径" 用户名@IP地址:"远程文件路径"
+                2. 下载文件到本地：
+                scp -i "密钥路径" -P 端口 username@server_ip:/path/to/file /local/path
             `
             const css =''
             const js = ``;

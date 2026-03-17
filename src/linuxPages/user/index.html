@@ -18,11 +18,13 @@
        	<script type="module" src="/components/house/foundation.js"></script>
         <script type="module">
             const html = `
-                1. 打包tar -cvf archive.tar "路径"
-                如果需要压缩需要改成-czvf
-                打包多个文件夹tar -cvf archive.tar "路径1" "路径2"
-                2. 解包tar -xvf archive.tar
-                3. 解压zip unzip archive.zip
+               1. 创建用户
+               useradd admin
+               2. 修改密码
+               passwd admin
+               3. 赋予管理员权限
+               usermod -aG wheel admin
+               wheel是管理员组的名字。
             `
             const css =''
             const js = ``;

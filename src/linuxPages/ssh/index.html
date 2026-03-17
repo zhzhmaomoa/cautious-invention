@@ -18,7 +18,44 @@
        	<script type="module" src="/components/house/foundation.js"></script>
         <script type="module">
             const html = `
-                ssh -i "密钥路径" -p 端口 用户名@IP地址 
+                ssh -i "密钥路径" -p 端口 用户名@IP地址
+                
+                修改ssh配置
+                sudo vim /etc/ssh/sshd_config
+                1.禁用 root 直接 SSH 登录
+                PermitRootLogin no
+                2.更改默认 SSH 端口
+                Port xxxx
+                3.禁用密码登陆
+                PasswordAuthentication no
+                4.允许密钥登陆
+                PubkeyAuthentication yes
+                n.使配置立即生效
+                sudo systemctl restart sshd
+
+                ssh密钥
+                使用密钥前需要提前在需要绑定密钥的用户主目录创建.ssh/和授权文件authorized_keys（如果没有的话），
+                要保证.ssh/目录权限为700且文件夹owner是主目录用户，authorized_keys文件权限为600。
+                chmod 700 /home/admin/.ssh 
+                chmod 600 /home/admin/.ssh/authorized_keys
+                chown -R admin:admin /home/admin/.ssh
+                用途一.本地远程登录服务器
+                1.生成密钥对
+                在服务器上执行ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_server -C "server-login"
+                -t 指定算法 -f 指定密钥文件路径 -C 添加注释
+                2.将公钥内容添加到authorized_keys文件中
+                cat ~/.ssh/id_ed25519_server.pub >> ~/.ssh/authorized_keys或者手工复制粘贴
+                3.在本地使用私钥登录，服务器会自动用authorized_keys中的公钥验证私钥合法性。
+                用途二.github等代码托管平台的身份验证
+                1.生成密钥对
+                在服务器上执行ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_github -C "github-access"
+                2.将公钥内容添加到github等平台的ssh key设置中
+                3.在服务器.ssh目录添加config文件，此时使用git clone 等操作时会自动使用正确的密钥进行身份验证。
+                Host github.com
+                    HostName github.com
+                    User git
+                    IdentityFile ~/.ssh/id_ed25519_github
+                
             `
             const css =''
             const js = ``;
